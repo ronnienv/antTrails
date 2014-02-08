@@ -5,7 +5,7 @@ handler.
 """
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
-from antTrailsDatabase import Occupant, Spot
+from antTrailsDatabase import Occupant, Spot, Test
 
 # Run the Bottle wsgi application. We don't need to call run() since our
 # application is embedded within an App Engine WSGI application server.
@@ -23,11 +23,11 @@ def home():
 
 @bottle.get('/database')
 def home():
-	print "Printed"
-	t1 = Test()
-	print "Printed 1"
+	t1 = Test(1)
   	t1.put()
-  	print "Printed 3"
+  	t = Test.all()
+  	result = t.get()
+  	print result
   	return "Database test"
 
 @bottle.get('/fakebuyer')
