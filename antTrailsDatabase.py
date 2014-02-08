@@ -1,14 +1,23 @@
 from google.appengine.ext import ndb
 
-class Vendor(ndb.Model):
-    """Models an individual Guestbook entry with author, content, and date."""
-    author = ndb.UserProperty()
-    content = ndb.StringProperty(indexed=False)
-    date = ndb.DateTimeProperty(auto_now_add=True)
 
-    
-class Spot(ndb.Model):
-    content = ndb.StringProperty(indexed=False)
-    author = ndb.UserProperty()
-    author = ndb.UserProperty()
-    author = ndb.UserProperty()
+class Occupant(db.Model):
+	headline = db.StringProperty(required=True)
+	description = db.StringProperty()
+	product_list = db.StringProperty()
+	date_timeime = db.StringProperty(required=True)
+	spot_id = db.IntegerProperty(required=True)
+	organization = db.StringProperty()
+	unique_id = db.datetime.datetime(required=True)
+	spot_image = db.Link()
+	password = db.StringProperty(required=True)
+	report = db.IntegerProperty()
+
+class Spot(db.Model):
+	location = db.GeoPt(required=True)
+	spot_id = db.IntegerProperty(required=True)
+	location_image = db.Link(required=True)
+	general_area = db.StringProperty(required=True)
+
+occupant = Occupant("headline", "description",
+					"product_list", )
