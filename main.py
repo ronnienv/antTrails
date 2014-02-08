@@ -6,7 +6,7 @@ handler.
 
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
-import antTrailsDatabase
+from antTrailsDatabase import Occupant, Spot
 
 # Run the Bottle wsgi application. We don't need to call run() since our
 # application is embedded within an App Engine WSGI application server.
@@ -21,6 +21,16 @@ def home():
   content = template('buyer', vendors)
   footer = template('footer',"")
   return header + content + footer
+
+@bottle.get('/fakebuyer')
+def home():
+  vendors = {'vendors':tmp_list}
+  header = template('header', "")
+  content = template('buyer', vendors)
+  footer = template('footer',"")
+  return header + content + footer
+
+
 
 @bottle.get('/vendor')
 def home():

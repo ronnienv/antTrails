@@ -1,23 +1,20 @@
 from google.appengine.ext import ndb
 
+class Occupant(ndb.Model):
+	headline = ndb.StringProperty(required=True)
+	description = ndb.StringProperty()
+	product_list = ndb.StringProperty()
+	date_timeime = ndb.StringProperty(required=True)
+	spot_id = ndb.IntegerProperty(required=True)
+	organization = ndb.StringProperty()
+	unique_id = ndb.DateTimeProperty(required=True)
+	spot_image = ndb.StringProperty()
+	password = ndb.StringProperty(required=True)
+	report = ndb.IntegerProperty()
 
-class Occupant(db.Model):
-	headline = db.StringProperty(required=True)
-	description = db.StringProperty()
-	product_list = db.StringProperty()
-	date_timeime = db.StringProperty(required=True)
-	spot_id = db.IntegerProperty(required=True)
-	organization = db.StringProperty()
-	unique_id = db.datetime.datetime(required=True)
-	spot_image = db.Link()
-	password = db.StringProperty(required=True)
-	report = db.IntegerProperty()
+class Spot(ndb.Model):
+	location = ndb.GeoPtProperty(required=True)
+	spot_id = ndb.IntegerProperty(required=True)
+	location_image = ndb.StringProperty(required=True)
+	general_area = ndb.StringProperty(required=True)
 
-class Spot(db.Model):
-	location = db.GeoPt(required=True)
-	spot_id = db.IntegerProperty(required=True)
-	location_image = db.Link(required=True)
-	general_area = db.StringProperty(required=True)
-
-occupant = Occupant("headline", "description",
-					"product_list", )
