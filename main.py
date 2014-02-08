@@ -19,9 +19,16 @@ def home():
   header = template('header', "")
   content = template('buyer', vendors)
   footer = template('footer',"")
-  t1 = Test()
-  t1.put()
   return header + content + footer
+
+@bottle.get('/database')
+def home():
+	print "Printed"
+	t1 = Test()
+	print "Printed 1"
+  	t1.put()
+  	print "Printed 3"
+  	return "Database test"
 
 @bottle.get('/fakebuyer')
 def home():

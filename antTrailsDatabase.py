@@ -1,4 +1,6 @@
 from google.appengine.ext import ndb
+from google.appengine.ext import db
+
 
 class Occupant(ndb.Model):
 	headline = ndb.StringProperty(required=True)
@@ -18,5 +20,5 @@ class Spot(ndb.Model):
 	location_image = ndb.StringProperty(required=True)
 	general_area = ndb.StringProperty(required=True)
 
-class test(nbd.Model):
-	test_property = nbd.IntegerProperty()
+class Test(db.Model):
+	test_property = db.IntegerProperty()
