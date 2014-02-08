@@ -3,7 +3,6 @@
 Loads the Bottle framework and adds a custom error
 handler.
 """
-
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
 from antTrailsDatabase import Occupant, Spot
@@ -20,6 +19,8 @@ def home():
   header = template('header', "")
   content = template('buyer', vendors)
   footer = template('footer',"")
+  t1 = Test()
+  t1.put()
   return header + content + footer
 
 @bottle.get('/fakebuyer')

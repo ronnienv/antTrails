@@ -18,3 +18,5 @@ class Spot(ndb.Model):
 	location_image = ndb.StringProperty(required=True)
 	general_area = ndb.StringProperty(required=True)
 
+class test(nbd.Model):
+	test_property = nbd.IntegerProperty()
