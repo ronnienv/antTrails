@@ -15,7 +15,7 @@ bottle = Bottle()
 @bottle.route('/')
 def home():
   """ Return Hello World at application root URL"""
-  return "World hold on!"
+  return "World "
 
 
 @bottle.error(404)
