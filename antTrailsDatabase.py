@@ -6,7 +6,7 @@ class Occupant(ndb.Model):
   headline = ndb.StringProperty(required=True)
   description = ndb.StringProperty()
   product_list = ndb.StringProperty()
-  date_timeime = ndb.StringProperty(required=True)
+  date_time = ndb.DateTimeProperty(required=True)
   spot_id = ndb.IntegerProperty(required=True)
   organization = ndb.StringProperty()
   unique_id = ndb.DateTimeProperty(required=True)
