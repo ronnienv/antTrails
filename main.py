@@ -12,6 +12,7 @@ from antTrailsDatabase import Occupant, Spot, Test
 bottle = Bottle()
 
 
+
 @bottle.get('/')
 def home():
   tmp_list = [{'headline':'AntTrails','description':'Awesome','products':[['a',1.99],['b',2.99]],'spotID':1,'Organization':'Anteater','latitude':33.643384,'longitude':-117.842071},{'headline':'AntTrails2','description':'More awesome','products':[['c',3.99],['d',4.99]],'spotID':2,'Organization':'Anteater2','latitude':33.644072,'longitude':-117.845236}]    
@@ -23,12 +24,12 @@ def home():
 
 @bottle.get('/database')
 def home():
-	t1 = Test(1)
-  	t1.put()
-  	t = Test.all()
-  	result = t.get()
-  	print result
-  	return "Database test"
+  t1 = Test(test_property = 10)
+  t1.test_property = 11
+  t1.put()
+  t = Test.all()
+  print t.get().test_property
+  return "Database test"
 
 @bottle.get('/fakebuyer')
 def home():
