@@ -5,6 +5,7 @@
       <th>Headline</th>
       <th>Description</th>
 	  <th>Products</th>
+	  <th>Organization</th>
 	  <th>Spot Number</th>
     </tr>
   </thead>
@@ -14,6 +15,7 @@
 	  <td>{{v['headline']}}</td>
 	  <td>{{v['description']}}</td>
 	  <td>{{v['products']}}</td>
+	  <td>{{v['Organization']}}</td>
 	  <td>{{v['spotID']}}</td>
     </tr>
     %end
