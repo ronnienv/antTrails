@@ -36,13 +36,8 @@ def home():
   footer = template('footer',"")
   return header + content + footer
     
-    
 @bottle.error(404)
 def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
 
-
-@route('/assets/<filename>')
-def server_static(filename):
-    return static_file(filename, root='./assets/')
