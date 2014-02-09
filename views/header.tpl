@@ -37,4 +37,5 @@
         </ul>
         <h3 class="text-muted">Project name</h3>
       </div>
+	<div><img src="assets\logo.jpg">
 
