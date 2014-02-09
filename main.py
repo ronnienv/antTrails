@@ -37,15 +37,16 @@ def home():
 
 @bottle.get('/fakebuyer')
 def home():
-  o = Occupant(headline = "headline", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
-  print "Here"
-  k = o.put()
-  print o
+  o = Occupant(headline = "Hi ronnie", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
+  o2 = Occupant(headline = "Hi Jeff", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
+  o.put()
+  o2.put()
   print "Here 1"
-  o1 = k.get()
+  o1 = Occupant.query()
   print "here 2"
-  print o1.date_time
-  return str(o1.date_time)
+  for t in o1:
+  	print t
+  return "finished"
 
 
 
