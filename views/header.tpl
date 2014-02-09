@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
-    <title>Narrow Jumbotron Template for Bootstrap</title>
+    <title>UCI AntTrails</title>
 
 
     <!-- Custom styles for this template -->
@@ -35,7 +35,6 @@
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
-        <h3 class="text-muted">Project name</h3>
-      </div>
-	<div><img src="assets\logo.jpg">
+       </div>
+	<div><img src= assets\testlogo.jpg>
 
