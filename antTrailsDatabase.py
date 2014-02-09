@@ -22,3 +22,5 @@ class Spot(ndb.Model):
 
 class Test(db.Model):
   test_property = db.IntegerProperty()
+
+
