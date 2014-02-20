@@ -44,9 +44,6 @@
       google.maps.event.addDomListener(window, 'load', initialize);
       </script>
     </head>
-<<<<<<< HEAD
-      <div id="googleMap" style="width:100%;height:600px;"></div>
-=======
       <div id="googleMap" style="width:50%;height:600px;"></div>
   </table>
 >>>>>>> test
