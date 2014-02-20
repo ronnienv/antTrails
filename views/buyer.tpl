@@ -21,6 +21,7 @@
        </tr>
        %end
      </tbody>
+	</table>
    </div><!-- /.table-responsive --></div> 
    <div class="col-md-4" style="width:50%;height:600px;"><!DOCTYPE html>
     <html>
@@ -43,9 +44,7 @@
       google.maps.event.addDomListener(window, 'load', initialize);
       </script>
     </head>
-      <div id="col-md-8" style="width:50%;height:600px;"></div>
-      <div id="googleMap" style="width:50%;height:600px;"></div>
-  </table>
+      <div id="googleMap" style="width:100%;height:600px;"></div>
 
 
 
