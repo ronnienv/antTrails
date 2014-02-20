@@ -23,7 +23,7 @@
      </tbody>
 	</table>
    </div><!-- /.table-responsive --></div> 
-   <div class="col-md-4" style="width:50%;height:600px;"><!DOCTYPE html>
+   <div class="col-md-4"><!DOCTYPE html>
     <html>
     <head>
       <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
@@ -44,7 +44,12 @@
       google.maps.event.addDomListener(window, 'load', initialize);
       </script>
     </head>
+<<<<<<< HEAD
       <div id="googleMap" style="width:100%;height:600px;"></div>
+=======
+      <div id="googleMap" style="width:50%;height:600px;"></div>
+  </table>
+>>>>>>> test
 
 
 
