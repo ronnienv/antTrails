@@ -32,7 +32,9 @@ def home():
   print t.get().test_property
   return "Database test"
 
-
+@bottle.get('/imgur')
+def home():
+    return "imgur"
 
 
 @bottle.get('/fakebuyer')

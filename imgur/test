@@ -1,37 +1,32 @@
-#basic networking imports
-from pprint import pprint
-import requests
-import json
- 
-#image handling imports
 import base64
- 
-#your api key will go here, as a string
-api_key = '5a5141ca9354bf7929b98a1d7a4c26ae'
- 
-#here's the API url that you'll need to POST to
-url = r'http://api.imgur.com/2/upload.json'
- 
-#full image path
-image_path = '1.jpg'
- 
-#open binary data, instead of regular read
-f = open(image_path, 'rb')
- 
-#encode image file for transfer
-binary_data = f.read()  #again, not string data, but binary data
-b64image = base64.b64encode(binary_data)
- 
-#data to send with the POST request
-payload = {'key' : api_key,
-           'image': b64image,
-           'title': 'apitest',}  #title of image as seen on imgur.com
- 
-#make the POST request, with the attached data of payload
-r = requests.post(url, data=payload)
- 
+from pprint import pprint
+import json
+import requests
+
+from base64 import b64encode
+
+client_id = '8a085352819267f'
+
+headers = {"Authorization": "Client-ID 8a085352819267f"}
+
+api_key = 'my-api-key'
+
+url = "https://api.imgur.com/3/upload.json"
+
+j1 = requests.post(
+    url, 
+    headers = headers,
+    data = {
+        'key': api_key, 
+        'image': b64encode(open('1.jpg', 'rb').read()),
+        'type': 'base64',
+        'name': '1.jpg',
+        'title': 'Picture no. 1'
+    }
+
 #turn the returned json into a python dict
-j = json.loads(r.text)
+j = json.loads(j1.text)
  
 #print it out cleanly
-pprint(j)
+pprint(j) 
+)
