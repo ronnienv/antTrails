@@ -4,10 +4,6 @@ Loads the Bottle framework and adds a custom error
 handler.
 """
 
-"used to import 3rd party libraries"
-import sys
-sys.path.insert(0, 'libs')
-
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
 from antTrailsDatabase import Occupant, Spot, Test
