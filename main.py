@@ -3,10 +3,16 @@
 Loads the Bottle framework and adds a custom error
 handler.
 """
+
+"used to import 3rd party libraries"
+import sys
+sys.path.insert(0, 'libs')
+
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
 from antTrailsDatabase import Occupant, Spot, Test
 import datetime
+import pyimgur
 
 # Run the Bottle wsgi application. We don't need to call run() since our
 # application is embedded within an App Engine WSGI application server.
@@ -34,7 +40,12 @@ def home():
 
 @bottle.get('/imgur')
 def home():
-    return "imgur"
+  CLIENT_ID = "8a085352819267f"
+  im = pyimgur.Imgur(CLIENT_ID)
+  image = im.get_image('S1jmapR')
+  print(image.title) # Cat Ying & Yang
+  print(image.link) # http://imgur.com/S1jmapR.jpg
+  return "imgur"
 
 
 @bottle.get('/fakebuyer')
