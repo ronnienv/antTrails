@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<div id="header">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -29,7 +30,7 @@
 
   <body>
   <div class="container">
-      <div class="header">
+      <div class="headercontent">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="/">Home</a></li>
 		  <li><a href="/vendor">Reserve</a></li>
@@ -39,16 +40,19 @@
        </div>
 	<div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
 	</body>
+	</div>
+</div>
 
-	<style>
+<style>
 
 * { margin:0; padding:0; }
 p { margin:5px 0 10px 0; }
 
-html, body, * {
-    padding: 0;
+#header{
+    padding-bottom: 10px;
     margin: 0;
-	padding-bottom:25px;
 }
+
+
 </style>
 

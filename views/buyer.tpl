@@ -1,5 +1,4 @@
 
-
 	<div id="leftCol">
 
     <table class="table table-striped">
@@ -25,7 +24,7 @@
 
 	     </tbody>
 		</table>
-	   </div><!-- /.table-responsive --></div> 
+	</div><!-- /.table-responsive --></div> 
 
 <div id="rightCol">
 	    <html>
@@ -52,42 +51,26 @@
 	  </table>
 
 
+</div>
 
-
-
-<head>
 <style>
 
 * { margin:0; padding:0; }
 p { margin:5px 0 10px 0; }
-html, body, * {
-    padding: 0;
-    margin: 0;
-}
-html {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-#leftCol {
-    background: ;
-    position: absolute;
-    left: 0;
-    top: 65px;
-    bottom: 0;
-    right: 65%;
-    overflow: scroll;
-    padding-top: 10px;
-}
-#rightCol {
-    background: ;
-    position: absolute;
-    left: 35%;
-    top: 50px;
-    bottom: 0;
-    right: 0;
-    overflow-y: hidden;    
-    padding: 2em;
-}
+
+#leftCol{
+	float: left;
+	width: 40%;
+	overflow-y: scroll;
+	padding-left: 20px;
+	padding-right: 10px
+	padding-bottom: 10px;
+	}
+#rightCol{
+	width: 60%;
+	float:left;
+	padding-left: 10px;
+	padding-right: 15px;
+	padding-bottom: 10px;}
 </style>
-</head>
+
