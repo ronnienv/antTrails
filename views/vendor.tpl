@@ -1,4 +1,4 @@
-<h1>Spot Occupant From</h1>
+<h1>Spot Occupant Form</h1>
 	<form method="POST" id="reservations">
 	
 		Spot Number:<p style="font-size:small; color:#4775ff"><input type="text" name="spotNumber" maxlength="3" required> 
