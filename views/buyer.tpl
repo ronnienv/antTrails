@@ -69,17 +69,17 @@ html {
     background: ;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 65px;
     bottom: 0;
     right: 65%;
-    overflow: hidden;
+    overflow: scroll;
     padding: 2em;
 }
 #rightCol {
     background: ;
     position: absolute;
     left: 35%;
-    top: 0;
+    top: 50px;
     bottom: 0;
     right: 0;
     overflow-y: hidden;    
