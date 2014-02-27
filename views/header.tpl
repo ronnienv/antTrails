@@ -37,6 +37,18 @@
           <li><a href="#">Contact</a></li>
         </ul>
        </div>
-	<div><a href="/"> <img src= assets\testlogo.jpg> </a></div>
+	<div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
 	</body>
+
+	<style>
+
+* { margin:0; padding:0; }
+p { margin:5px 0 10px 0; }
+
+html, body, * {
+    padding: 0;
+    margin: 0;
+	padding-bottom:25px;
+}
+</style>
 

@@ -1,4 +1,5 @@
 
+
 	<div id="leftCol">
 
     <table class="table table-striped">
@@ -56,6 +57,9 @@
 
 <head>
 <style>
+
+* { margin:0; padding:0; }
+p { margin:5px 0 10px 0; }
 html, body, * {
     padding: 0;
     margin: 0;
@@ -73,7 +77,7 @@ html {
     bottom: 0;
     right: 65%;
     overflow: scroll;
-    padding: 2em;
+    padding-top: 10px;
 }
 #rightCol {
     background: ;
