@@ -71,14 +71,14 @@ html {
     left: 0;
     top: 0;
     bottom: 0;
-    right: 75%;
+    right: 65%;
     overflow: hidden;
     padding: 2em;
 }
 #rightCol {
     background: ;
     position: absolute;
-    left: 25%;
+    left: 35%;
     top: 0;
     bottom: 0;
     right: 0;
