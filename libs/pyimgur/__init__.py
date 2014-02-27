@@ -700,6 +700,7 @@ class Imgur:
             base_url = url
             url %= page
         kwargs['authentication'] = auth
+
         while True:
             result = request.send_request(url, **kwargs)
             new_content, ratelimit_info = result

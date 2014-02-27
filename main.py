@@ -9,7 +9,6 @@ from bottle import Bottle,route, run, template, static_file, get, post, request
 from antTrailsDatabase import Occupant, Spot, Test
 import datetime
 import pyimgur
-import webbrowser
 
 # Run the Bottle wsgi application. We don't need to call run() since our
 # application is embedded within an App Engine WSGI application server.
@@ -37,12 +36,12 @@ def home():
 
 @bottle.get('/imgur')
 def home():
-  CLIENT_ID = "8a085352819267f"
-  CLIENT_SECRET = "109cead1e8959699a82615ddce89ca008a218770"
+  CLIENT_ID = "14e82498fa58f55"
+  CLIENT_SECRET = "a6272598109f505833e1ea69d3c67bb387e7a92d"
   im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
   image = im.get_image('S1jmapR')
-  print(image.title) # Cat Ying & Yang
-  print(image.link) # http://imgur.com/S1jmapR.jpg
+  print image.title # Cat Ying & Yang
+  print image.link # http://imgur.com/S1jmapR.jpg
   return "imgur"
 
 
