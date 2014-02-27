@@ -1,5 +1,4 @@
 
-	 
 	<div id="leftCol">
 
     <table class="table table-striped">
@@ -83,7 +82,7 @@ html {
     top: 0;
     bottom: 0;
     right: 0;
-    overflow-y: auto;    
+    overflow-y: hidden;    
     padding: 2em;
 }
 </style>
