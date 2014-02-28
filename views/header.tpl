@@ -50,7 +50,8 @@ p { margin:5px 0 10px 0; }
 #header{
     padding-bottom: 10px;
     margin: 0;
-}
+	float:left;
+	}
 
 
 </style>
