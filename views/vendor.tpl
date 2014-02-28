@@ -1,3 +1,4 @@
+<div id="form">
 <h1>Spot Occupant From</h1>
 	<form method="POST" id="reservations">
 	
@@ -31,5 +32,15 @@
 		<input type="submit"> 
 		<p></p>
 	<form>
+</div>
+<style>
+
+#form{
+    padding: 20px;
+    margin: 0;
+}
+
+
+</style>
 		
 	
