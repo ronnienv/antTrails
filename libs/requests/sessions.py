@@ -155,7 +155,6 @@ class SessionRedirectMixin(object):
 
             extract_cookies_to_jar(prepared_request._cookies,
                                    prepared_request, resp.raw)
-            prepared_request._cookies.update(self.cookies)
             prepared_request.prepare_cookies(prepared_request._cookies)
 
             resp = self.send(
@@ -256,7 +255,7 @@ class Session(SessionRedirectMixin):
         :class:`Session`.
 
         :param request: :class:`Request` instance to prepare with this
-            session's settings.
+        session's settings.
         """
         cookies = request.cookies or {}
 

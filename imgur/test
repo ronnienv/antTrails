@@ -1,0 +1,8 @@
+import pyimgur
+CLIENT_ID = "14e82498fa58f55"
+im = pyimgur.Imgur(CLIENT_ID)
+image = im.get_image('S1jmapR')
+print(image.title) # Cat Ying & Yang
+print(image.link) # http://imgur.com/S1jmapR.jpg
+print(image.size)
+print(image.width)

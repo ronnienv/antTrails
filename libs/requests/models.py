@@ -20,10 +20,9 @@ from .cookies import cookiejar_from_dict, get_cookie_header
 from .packages.urllib3.fields import RequestField
 from .packages.urllib3.filepost import encode_multipart_formdata
 from .packages.urllib3.util import parse_url
-from .packages.urllib3.exceptions import DecodeError
 from .exceptions import (
     HTTPError, RequestException, MissingSchema, InvalidURL,
-    ChunkedEncodingError, ContentDecodingError)
+    ChunkedEncodingError)
 from .utils import (
     guess_filename, get_auth_from_url, requote_uri,
     stream_decode_response_unicode, to_key_val_list, parse_header_links,
@@ -526,7 +525,7 @@ class Response(object):
         self.headers = CaseInsensitiveDict()
 
         #: File-like object representation of response (for advanced usage).
-        #: Use of ``raw`` requires that ``stream=True`` be set on the request.
+        #: Requires that ``stream=True` on the request.
         # This requirement does not apply for use internally to Requests.
         self.raw = None
 
@@ -617,8 +616,6 @@ class Response(object):
                         yield chunk
                 except IncompleteRead as e:
                     raise ChunkedEncodingError(e)
-                except DecodeError as e:
-                    raise ContentDecodingError(e)
             except AttributeError:
                 # Standard file-like object.
                 while True:
@@ -691,12 +688,7 @@ class Response(object):
         """Content of the response, in unicode.
 
         If Response.encoding is None, encoding will be guessed using
-        ``chardet``.
-
-        The encoding of the response content is determined based soley on HTTP
-        headers, following RFC 2616 to the letter. If you can take advantage of
-        non-HTTP knowledge to make a better guess at the encoding, you should
-        set ``r.encoding`` appropriately before accessing this property.
+        ``charade``.
         """
 
         # Try charset from content-type
