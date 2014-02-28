@@ -1,6 +1,6 @@
       <div class="footer">
 		<hr align="center" width="90%">
-        <p>&copy; Don't Smile At Stranger 2014</p>
+        <p>&copy; Don't Smile At Strangers 2014</p>
       </div>
 
     </div> <!-- /container -->

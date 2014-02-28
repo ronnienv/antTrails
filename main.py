@@ -36,7 +36,8 @@ def home():
 
 @bottle.get('/imgurread')
 def home():
-  CLIENT_ID = "14e82498fa58f55"
+ 
+  CLIENT_ID = "023b858ecdb2d0c"
   im = pyimgur.Imgur(CLIENT_ID)
   image = im.get_image('S1jmapR')
   print image.title # Cat Ying & Yang
@@ -47,16 +48,17 @@ def home():
 
 @bottle.get('/imgurupload')
 def home():
-  
-  CLIENT_ID = "14e82498fa58f55"
+
+  CLIENT_ID = "023b858ecdb2d0c"
+  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
+
+  #unsure how to get to the correct path
   PATH = "assets/logo.jpg"
 
-  im = pyimgur.Imgur(CLIENT_ID)
+  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
   uploaded_image = im.upload_image(PATH, title="Uploaded with PyImgur")
-  print(uploaded_image.title)
-  print(uploaded_image.date)
-  print(uploaded_image.url)
   print(uploaded_image.link)
+  uploaded_image.delete()
 
 @bottle.get('/fakebuyer')
 def home():
