@@ -38,7 +38,7 @@
           <li><a href="#">Contact</a></li>
         </ul>
        </div>
-	<div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
+	<div><a href="/"> <img src= assets\logosplit2.jpg> </a><a href="/"> <img src= assets\logosplit.jpg></a></div>
 	</body>
 	</div>
 </div>
