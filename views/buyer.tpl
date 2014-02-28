@@ -41,7 +41,7 @@
 		  {
 	        var mapProp = {
 	          center:new google.maps.LatLng(33.645854,-117.842681),
-	          zoom:16,
+	          zoom:17,
 	          mapTypeId:google.maps.MapTypeId.ROADMAP
 	        };
 	        var map=new google.maps.Map(document.getElementById("googleMap")
@@ -50,6 +50,15 @@
 			var marker=new google.maps.Marker({position:myCenter,});
 
 		marker.setMap(map);
+
+			var infowindow = new google.maps.InfoWindow({
+  			content:"Hello World!"
+  			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+  			infowindow.open(map,marker);
+  			});
+
 	      }
 	
 	      google.maps.event.addDomListener(window, 'load', initialize);
