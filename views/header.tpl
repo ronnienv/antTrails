@@ -35,7 +35,6 @@
           <li class="active"><a href="/">Home</a></li>
 		  <li><a href="/vendor">Reserve</a></li>
           <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
         </ul>
        </div>
 	<div><a href="/"> <img src= assets\logosplit2.jpg> </a><a href="/"> <img src= assets\logosplit.jpg></a></div>
