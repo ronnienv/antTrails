@@ -35,6 +35,7 @@
 	  
 	  var myCenter=new google.maps.LatLng(33.645854,-117.842681);
 	  
+	  
 	  function initialize()
 	  {
 		var mapProp = {
@@ -49,7 +50,8 @@
 
 		marker.setMap(map);
 	  }
-
+	  var bounds = new google.maps.LatLngBounds(se: 33.6423851,-117.8468299, ne: 33.6506491,-117.8365209);
+	  map.fitBounds(bounds)
 	  google.maps.event.addDomListener(window, 'load', initialize);
 	  </script>
 	</head>
