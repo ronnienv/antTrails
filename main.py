@@ -43,8 +43,10 @@ def home():
   print image.title # Cat Ying & Yang
   print(image.link) # http://imgur.com/S1jmapR.jpg
   print(image.size)
-  width = image.link
-  return width
+  link = image.link_small_square
+  header = template('header', "")
+  #print("<img src=" + link +">")
+  return header + "<img src=" + link +">"
 
 @bottle.get('/imgurupload')
 def home():
