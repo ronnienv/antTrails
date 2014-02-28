@@ -39,7 +39,7 @@
 	  {
 		var mapProp = {
 		  center:myCenter,
-		  zoom:16,
+		  zoom:17,
 		  mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 		var map=new google.maps.Map(document.getElementById("googleMap")
