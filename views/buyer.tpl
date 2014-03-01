@@ -47,6 +47,20 @@
 		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+		var infowindow = new google.maps.InfoWindow({
+  			content:"TECH BECKA!"
+  });
+
+		google.maps.event.addListener(marker, 'click', function() {
+  		 infowindow.open(map,marker);
+  });
+=======
+		var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+		map.fitBounds(bounds);
+>>>>>>> FETCH_HEAD
 		
 		google.maps.event.addListener(map, 'center_changed', function() {
 
@@ -66,6 +80,7 @@
 		  	
 	  	});
 
+>>>>>>> c9edb9ddb80c5dae13c78cbc59ed0695829a3178
 	  }
 
 	  google.maps.event.addDomListener(window, 'load', initialize);
