@@ -1,6 +1,5 @@
 
-	<div id="leftCol">
-
+<div id="leftCol">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -21,80 +20,76 @@
          <td>{{v['spotID']}}</td>
        </tr>
        %end
+	  </tbody>
+	</table>
+</div>
 
-	     </tbody>
-		</table>
-	</div><!-- /.table-responsive --></div> 
+<!-- /.table-responsive -->
 
 <div id="rightCol">
-	    <html>
-	    <head>
-	      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
-	      </script>
- 	
-	      <script>
-	      
-	      var myCenter=new google.maps.LatLng(33.645854,-117.842681);
-		  
-		  function initialize()
-		  
-		  {
-	        var mapProp = {
-	          center:new google.maps.LatLng(33.645854,-117.842681),
-	          zoom:16,
-	          mapTypeId:google.maps.MapTypeId.ROADMAP
-	        };
-	        var map=new google.maps.Map(document.getElementById("googleMap")
-	          ,mapProp);
-			
-			var marker=new google.maps.Marker({position:myCenter,});
+	<head>
+	  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+	  </script>
+
+	  <script>
+	  
+	  var myCenter=new google.maps.LatLng(33.645854,-117.842681);
+	  
+	  function initialize()
+	  {
+		var mapProp = {
+		  center:myCenter,
+		  zoom:17,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		};
+		var map=new google.maps.Map(document.getElementById("googleMap")
+		  ,mapProp);
+		
+		var marker=new google.maps.Marker({position:myCenter});
 
 		marker.setMap(map);
-	      }
 
-		var infowindow = new google.maps.InfoWindow({
-  			content:"TECH BECKA!"
-  });
-
-		google.maps.event.addListener(marker, 'click', function() {
-  		 infowindow.open(map,marker);
-  });
 		var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
 		map.fitBounds(bounds);
 		
-		google.maps.event.addListener(map, 'center_changed', function() {
 
-			var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+		google.maps.event.addListener(map, 'dragend', function() {
+
 			if(!bounds.contains(map.getCenter()))	
 			{
 				window.setTimeout(function() {
-	      		map.panTo(myCenter);
+	      		map.panTo(marker.getPosition());
 	   		 	});
 			}
-			else
-			{
-				window.setTimeout(function() {
-	      		map.panTo(myCenter);
-	   		 	});
-			}
+
 		  	
-	  	});
-
+	  	 });
+	  google.maps.event.addListener(map, 'click', function(e) {
+		placeMarker(e.latLng, map);
+	  });
 	  }
+	  
+	 google.maps.event.addDomListener(window, 'load', initialize);
 
-	  google.maps.event.addDomListener(window, 'load', initialize);
+	function placeMarker(position, map) {
+	  var marker = new google.maps.Marker({
+		position: position,
+		map: map
+	  });
+	  map.panTo(position);
+	}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+		
+	  
+
+	  </script>
 
 
-	
-	      google.maps.event.addDomListener(window, 'load', initialize);
-	      </script>
-	    </head>
-	      <div id="googleMap" style="width:100%;height:600px;"></div>
-	  </table>
-
-
+	</head>
+	<div id="googleMap" style="width:100%;height:600px;"></div>
 </div>
-
+		
 <style>
 
 * { margin:0; padding:0; }
