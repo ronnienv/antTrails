@@ -27,9 +27,33 @@
 <!-- /.table-responsive -->
 
 <div id="rightCol">
+<<<<<<< HEAD
+	    <html>
+	    <head>
+	      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+	      </script>
+ 	
+	      <script>
+	      
+	      var myCenter=new google.maps.LatLng(33.645854,-117.842681);
+		  
+		  function initialize()
+		  
+		  {
+	        var mapProp = {
+	          center:new google.maps.LatLng(33.645854,-117.842681),
+	          zoom:17,
+	          mapTypeId:google.maps.MapTypeId.ROADMAP
+	        };
+	        var map=new google.maps.Map(document.getElementById("googleMap")
+	          ,mapProp);
+			
+			var marker=new google.maps.Marker({position:myCenter,});
+=======
 	<head>
 	  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 	  </script>
+>>>>>>> FETCH_HEAD
 
 	  <script>
 	  
@@ -47,6 +71,17 @@
 		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
 
+<<<<<<< HEAD
+			var infowindow = new google.maps.InfoWindow({
+  			content:"Hello World!"
+  			});
+
+			google.maps.event.addListener(marker, 'click', function() {
+  			infowindow.open(map,marker);
+  			});
+
+	      }
+=======
 
 		var infowindow = new google.maps.InfoWindow({
   			content:"TECH BECKA!"
@@ -79,7 +114,15 @@
 	  	});
 	  }
 
+<<<<<<< HEAD
 	  google.maps.event.addDomListener(window, 'load', initialize);	
+=======
+	  google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+>>>>>>> FETCH_HEAD
+>>>>>>> FETCH_HEAD
 	
 
 		
