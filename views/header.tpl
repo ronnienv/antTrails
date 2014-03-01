@@ -29,18 +29,18 @@
   </head>
 
   <body>
-  <div class="container">
+  <div>
       <div class="headercontent">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="/">Home</a></li>
-		  <li><a href="/vendor">Reserve</a></li>
+      <li><a href="/vendor">Reserve</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
        </div>
-	<div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
-	</body>
-	</div>
+  <div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
+  </body>
+  </div>
 </div>
 
 <style>
@@ -51,7 +51,11 @@ p { margin:5px 0 10px 0; }
 #header{
     padding-bottom: 10px;
     margin: 0;
+<<<<<<< HEAD
+  }
+=======
 }
+>>>>>>> 44c1d9efdef9f240515392bee30cd70e094ee45e
 
 
 </style>

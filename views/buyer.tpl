@@ -42,44 +42,49 @@
 		  zoom:17,
 		  mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
-		var map=new google.maps.Map(document.getElementById("googleMap")
-		  ,mapProp);
+		var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
 		
 		var marker=new google.maps.Marker({position:myCenter});
-
 		marker.setMap(map);
+
+
+		var infowindow = new google.maps.InfoWindow({
+  			content:"TECH BECKA!"
+  });
+
+		google.maps.event.addListener(marker, 'click', function() {
+  		 infowindow.open(map,marker);
+  });
 
 		var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
 		map.fitBounds(bounds);
+
 		
+		google.maps.event.addListener(map, 'center_changed', function() {
 
-		google.maps.event.addListener(map, 'dragend', function() {
-
+			var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
 			if(!bounds.contains(map.getCenter()))	
 			{
 				window.setTimeout(function() {
-	      		map.panTo(marker.getPosition());
+	      		map.panTo(myCenter);
 	   		 	});
 			}
-
+			else
+			{
+				window.setTimeout(function() {
+	      		map.panTo(myCenter);
+	   		 	});
+			}
 		  	
-	  	 });
-	  google.maps.event.addListener(map, 'click', function(e) {
-		placeMarker(e.latLng, map);
-	  });
+	  	});
 	  }
-	  
-	 google.maps.event.addDomListener(window, 'load', initialize);
 
-	function placeMarker(position, map) {
-	  var marker = new google.maps.Marker({
-		position: position,
-		map: map
-	  });
-	  map.panTo(position);
-	}
+	  google.maps.event.addDomListener(window, 'load', initialize);
 
-google.maps.event.addDomListener(window, 'load', initialize);
+
+
+	
+
 		
 	  
 
