@@ -149,7 +149,7 @@ class Basic_object(object):
                 self.is_deleted = self.deleted
                 del self.deleted
             if "image_id" in vars(self):
-                self.permalink = ("http://imgur.com/gallery/%s/comment/%d" %
+                self.permalink = ("https://imgur.com/gallery/%s/comment/%d" %
                                  (self.image_id, self.id))
                 self.image = Image({'id': self.image_id}, self._imgur,
                                    has_fetched=False)
@@ -700,6 +700,7 @@ class Imgur:
             base_url = url
             url %= page
         kwargs['authentication'] = auth
+
         while True:
             result = request.send_request(url, **kwargs)
             new_content, ratelimit_info = result

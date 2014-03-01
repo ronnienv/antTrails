@@ -34,31 +34,16 @@ def home():
   print t.get().test_property
   return "Database test"
 
-@bottle.get('/imgurread')
+@bottle.get('/imgur')
 def home():
- 
-  CLIENT_ID = "023b858ecdb2d0c"
-  im = pyimgur.Imgur(CLIENT_ID)
+  CLIENT_ID = "14e82498fa58f55"
+  CLIENT_SECRET = "a6272598109f505833e1ea69d3c67bb387e7a92d"
+  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
   image = im.get_image('S1jmapR')
   print image.title # Cat Ying & Yang
-  print(image.link) # http://imgur.com/S1jmapR.jpg
-  print(image.size)
-  width = image.link
-  return width
+  print image.link # http://imgur.com/S1jmapR.jpg
+  return "imgur"
 
-@bottle.get('/imgurupload')
-def home():
-
-  CLIENT_ID = "023b858ecdb2d0c"
-  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
-
-  #unsure how to get to the correct path
-  PATH = "assets/logo.jpg"
-
-  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
-  uploaded_image = im.upload_image(PATH, title="Uploaded with PyImgur")
-  print(uploaded_image.link)
-  uploaded_image.delete()
 
 @bottle.get('/fakebuyer')
 def home():
@@ -66,7 +51,9 @@ def home():
   o2 = Occupant(headline = "Hi Jeff", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
   o.put()
   o2.put()
+  print "Here 1"
   o1 = Occupant.query()
+  print "here 2"
   for t in o1:
   	print t
   return "finished"
