@@ -51,11 +51,11 @@ p { margin:5px 0 10px 0; }
 #header{
     padding-bottom: 10px;
     margin: 0;
-<<<<<<< HEAD
+
   }
-=======
+
 }
->>>>>>> 44c1d9efdef9f240515392bee30cd70e094ee45e
+
 
 
 </style>
