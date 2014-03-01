@@ -50,44 +50,32 @@
 
 		var infowindow = new google.maps.InfoWindow({
   			content:"TECH BECKA!"
-  });
+ 		 });
 
 		google.maps.event.addListener(marker, 'click', function() {
   		 infowindow.open(map,marker);
-  });
+ 		 });
 
-		var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+
+		var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
 		map.fitBounds(bounds);
 
 		
 		google.maps.event.addListener(map, 'center_changed', function() {
 
-			var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+			var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
 			if(!bounds.contains(map.getCenter()))	
 			{
 				window.setTimeout(function() {
 	      		map.panTo(myCenter);
 	   		 	});
 			}
-			else
-			{
-				window.setTimeout(function() {
-	      		map.panTo(myCenter);
-	   		 	});
-			}
+	
 		  	
 	  	});
 	  }
 
 	  google.maps.event.addDomListener(window, 'load', initialize);
-
-
-
-	
-
-		
-	  
-
 	  </script>
 
 
