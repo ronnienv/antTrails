@@ -27,7 +27,6 @@
 <!-- /.table-responsive -->
 
 <div id="rightCol">
-<<<<<<< HEAD
 	    <html>
 	    <head>
 	      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
@@ -49,11 +48,9 @@
 	          ,mapProp);
 			
 			var marker=new google.maps.Marker({position:myCenter,});
-=======
 	<head>
 	  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
 	  </script>
->>>>>>> FETCH_HEAD
 
 	  <script>
 	  
@@ -71,7 +68,6 @@
 		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
 
-<<<<<<< HEAD
 			var infowindow = new google.maps.InfoWindow({
   			content:"Hello World!"
   			});
@@ -81,7 +77,6 @@
   			});
 
 	      }
-=======
 
 		var infowindow = new google.maps.InfoWindow({
   			content:"TECH BECKA!"
@@ -116,9 +111,6 @@
 
 	  google.maps.event.addDomListener(window, 'load', initialize);
 
-
-
->>>>>>> FETCH_HEAD
 	
 
 		
