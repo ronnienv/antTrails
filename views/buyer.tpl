@@ -1,6 +1,5 @@
 
-	<div id="leftCol">
-
+<div id="leftCol">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -21,12 +20,14 @@
          <td>{{v['spotID']}}</td>
        </tr>
        %end
+	  </tbody>
+	</table>
+</div>
 
-	     </tbody>
-		</table>
-	</div><!-- /.table-responsive --></div> 
+<!-- /.table-responsive -->
 
 <div id="rightCol">
+<<<<<<< HEAD
 	    <html>
 	    <head>
 	      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
@@ -48,9 +49,29 @@
 	          ,mapProp);
 			
 			var marker=new google.maps.Marker({position:myCenter,});
+=======
+	<head>
+	  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+	  </script>
+>>>>>>> FETCH_HEAD
 
+	  <script>
+	  
+	  var myCenter=new google.maps.LatLng(33.645854,-117.842681);
+	  
+	  function initialize()
+	  {
+		var mapProp = {
+		  center:myCenter,
+		  zoom:17,
+		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		};
+		var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
+		
+		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
 
+<<<<<<< HEAD
 			var infowindow = new google.maps.InfoWindow({
   			content:"Hello World!"
   			});
@@ -60,16 +81,56 @@
   			});
 
 	      }
+=======
+
+		var infowindow = new google.maps.InfoWindow({
+  			content:"TECH BECKA!"
+  });
+
+		google.maps.event.addListener(marker, 'click', function() {
+  		 infowindow.open(map,marker);
+  });
+
+		var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+		map.fitBounds(bounds);
+
+		
+		google.maps.event.addListener(map, 'center_changed', function() {
+
+			var bounds = new google.maps.LatLngBounds(33.6423851,-117.8468299, 33.6506491,-117.8365209);
+			if(!bounds.contains(map.getCenter()))	
+			{
+				window.setTimeout(function() {
+	      		map.panTo(myCenter);
+	   		 	});
+			}
+			else
+			{
+				window.setTimeout(function() {
+	      		map.panTo(myCenter);
+	   		 	});
+			}
+		  	
+	  	});
+	  }
+
+	  google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+>>>>>>> FETCH_HEAD
 	
-	      google.maps.event.addDomListener(window, 'load', initialize);
-	      </script>
-	    </head>
-	      <div id="googleMap" style="width:100%;height:600px;"></div>
-	  </table>
+
+		
+	  
+
+	  </script>
 
 
+	</head>
+	<div id="googleMap" style="width:100%;height:600px;"></div>
 </div>
-
+		
 <style>
 
 * { margin:0; padding:0; }

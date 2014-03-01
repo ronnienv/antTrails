@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 <h1>Spot Occupant Form</h1>
+=======
+<div id="form">
+
+<br><div id=title><h1>Spot Occupant Form</h1></div></br>
+	<div id="formcontent">
+>>>>>>> FETCH_HEAD
 	<form method="POST" id="reservations">
 	
 		Spot Number:<p style="font-size:small; color:#4775ff"><input type="text" name="spotNumber" maxlength="3" required> 
@@ -31,5 +38,24 @@
 		<input type="submit"> 
 		<p></p>
 	<form>
+	</div>
+</div>
+<style>
+
+#form{
+    padding: 20px;
+    margin: 0;
+}
+
+#title{
+	float: left;
+	clear: right;
+}
+
+#formcontent{
+	float: left;
+	clear: right;
+	}
+</style>
 		
 	
