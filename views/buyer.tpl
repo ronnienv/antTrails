@@ -43,7 +43,8 @@
 		  mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 		var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-		
+		map.setTilt(0);
+
 		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
 
@@ -55,13 +56,8 @@
 		google.maps.event.addListener(marker, 'click', function() {
   		 infowindow.open(map,marker);
  		 });
-
-
-		var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
-		map.fitBounds(bounds);
-
 		
-		google.maps.event.addListener(map, 'center_changed', function() {
+		google.maps.event.addListener(map, 'dragend', function() {
 
 			var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
 			if(!bounds.contains(map.getCenter()))	
@@ -70,7 +66,6 @@
 	      		map.panTo(myCenter);
 	   		 	});
 			}
-	
 		  	
 	  	});
 	  }
