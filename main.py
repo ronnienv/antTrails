@@ -58,8 +58,6 @@ def home():
   	print t
   return "finished"
 
-
-
 @bottle.get('/vendor')
 def home():
   header = template('header', "")
@@ -69,10 +67,21 @@ def home():
 
 @bottle.post('/vendor')
 def home():
-  header = template('header', "")
-  content = template('vendor',"")
-  footer = template('footer',"")
-  return header + content + footer
+  # header = template('header', "")
+  # content = template('vendor',"")
+  # footer = template('footer',"")
+  thankYou = "Form Submitted! Thank you!" 
+  sn = request.forms.get('spotNumber')
+  hl = request.forms.get('headline')
+  org = request.forms.get('organization')
+  pl = request.forms.get('productList')
+  desc = request.forms.get('description')
+  pw = request.forms.get('password')
+
+
+  occupant = Occupant(headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
+  occupantKey = occupant.put()
+  return "duck"
     
 @bottle.error(404)
 def error_404(error):

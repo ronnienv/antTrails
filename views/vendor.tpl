@@ -2,7 +2,7 @@
 
 <div id="title"><h1>Spot Occupant Form</h1></div>
 	<div id="formcontent">
-	<form method="POST" id="reservations">
+	<form method="post" id="reservations">
 	
 		Spot Number:<p style="font-size:small; color:#4775ff"><input type="text" name="spotNumber" maxlength="3" required> 
 		ex. 24 
@@ -16,7 +16,7 @@
 		ex. Cat Lovers Anonymous
 		</p>
 		
-		[Product List]:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="description" form="reservations" maxlength="300"></textarea>
+		[Product List]:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="productList" form="reservations" maxlength="300"></textarea>
 		<!-- enter example -->
 		</p>
 		
