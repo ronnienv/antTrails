@@ -106,17 +106,25 @@ def home():
 
   snDatabase = Occupant.get_by_id(sn)
 
-  if snDatabase == None:
-    occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
-    occupantKey = occupant.put()
-    o = Occupant.get_by_id(sn)
+  if type(sn) is int:
+    if snDatabase == None:
+      occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
+      occupantKey = occupant.put()
+      o = Occupant.get_by_id(sn)
 
-    response.set_cookie("submittedForm", "yes")
-    redirect('/')
+      response.set_cookie("submittedForm", "yes")
+      redirect('/')
+
+    else:
+      header = template('header', home="", vendor="active", about="")
+      content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+      footer = template('footer',"")
+
+      return header + content + footer
 
   else:
     header = template('header', home="", vendor="active", about="")
-    content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer
