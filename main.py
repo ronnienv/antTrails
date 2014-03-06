@@ -47,16 +47,14 @@ def home():
 
 @bottle.get('/fakebuyer')
 def home():
-  o = Occupant(headline = "Hi ronnie", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
-  o2 = Occupant(headline = "Hi Jeff", description = "description", product_list = "product_list", date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = 1, organization = "organization", spot_image = "spot_image", password = "password", report = 1)
-  o.put()
-  o2.put()
-  print "Here 1"
+  
   o1 = Occupant.query()
-  print "here 2"
+
+  test = ""
   for t in o1:
-  	print t
-  return "finished"
+  	test += t.headline
+
+  return test
 
 @bottle.get('/vendor')
 def home():
@@ -64,6 +62,11 @@ def home():
   content = template('vendor',"")
   footer = template('footer',"")
   return header + content + footer
+
+  @bottle.get('/testdatabase')
+  def home():
+    header = template('header', "")
+
 
 @bottle.post('/vendor')
 def home():
@@ -79,9 +82,12 @@ def home():
   pw = request.forms.get('password')
 
 
-  occupant = Occupant(headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), unique_id = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
+  occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
   occupantKey = occupant.put()
-  return "duck"
+
+  o = Occupant.get_by_id(sn)
+  
+  return o.headline 
     
 @bottle.error(404)
 def error_404(error):
