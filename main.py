@@ -6,7 +6,7 @@ handler.
 
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request
-from antTrailsDatabase import Occupant, Spot, Test
+from antTrailsDatabase import Occupant, Spot
 import datetime
 import pyimgur
 
