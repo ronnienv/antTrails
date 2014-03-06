@@ -1,6 +1,7 @@
 <div id="form">
 
 <div id="title"><h1>Spot Occupant Form</h1></div>
+<p style="color:#CC0000">{{message}}</p>
 	<div id="formcontent">
 	<form method="post" id="reservations">
 
@@ -39,7 +40,9 @@
 <style>
 
 #form{
-    padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
     margin: 0;
 }
 </style>

@@ -5,7 +5,7 @@ handler.
 """
 
 # import the Bottle framework
-from bottle import Bottle,route, run, template, static_file, get, post, request
+from bottle import Bottle,route, run, template, static_file, get, post, request, redirect
 from antTrailsDatabase import Occupant, Spot
 import datetime
 import pyimgur
@@ -74,7 +74,7 @@ def vendor_to_longlat(spreadsheet):
 @bottle.get('/vendor')
 def home():
   header = template('header', "")
-  content = template('vendor', hl = "" , org = "", pl = "", desc = "", pw = "")
+  content = template('vendor', message = "", hl = "" , org = "", pl = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
 
@@ -100,11 +100,12 @@ def home():
     occupantKey = occupant.put()
     o = Occupant.get_by_id(sn)
 
-    return "Spot was added to the database!"
+    #window.alert("Thank you for reserving your Spot! You will now be redirected to the main page.");
+    redirect('/')
 
   else:
     header = template('header', "")
-    content = template('vendor', hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+    content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer

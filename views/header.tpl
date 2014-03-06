@@ -50,7 +50,7 @@ p { margin:5px 0 10px 0; }
 #header{
 	padding-left: 10px;
 	padding-right: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
     margin: 0;
   }
 }
