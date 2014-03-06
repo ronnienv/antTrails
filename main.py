@@ -79,6 +79,7 @@ def vendor_to_longlat(spreadsheet):
       vendor_longlat.update({item[0]:(item[1],item[2])})
     except:
       pass
+vendor_to_longlat('LongituteLatitutde.txt')
 
 
 @bottle.get('/vendor')
@@ -124,5 +125,6 @@ def home():
 def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
+
 
 
