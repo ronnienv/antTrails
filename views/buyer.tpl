@@ -77,7 +77,7 @@
 	</head>
 	<div id="googleMap" style="width:100%;height:600px;"></div>
 </div>
-		
+
 <style>
 
 * { margin:0; padding:0; }

@@ -32,9 +32,9 @@
   <div>
       <div class="headercontent">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Home</a></li>
-      <li><a href="/vendor">Reserve</a></li>
-          <li><a href="#">About</a></li>
+          <li class="{{home}}"><a href="/">Home</a></li>
+          <li class="{{vendor}}"><a href="/vendor">Reserve</a></li>
+          <li class="{{about}}"><a href="#">About</a></li>
         </ul>
        </div>
   <div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>

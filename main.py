@@ -5,7 +5,7 @@ handler.
 """
 
 # import the Bottle framework
-from bottle import Bottle,route, run, template, static_file, get, post, request, redirect
+from bottle import Bottle,route, run, template, static_file, get, post, request, redirect, response
 from antTrailsDatabase import Occupant, Spot
 import datetime
 import pyimgur
@@ -20,19 +20,29 @@ bottle = Bottle()
 def home():
   tmp_list = [{'headline':'AntTrails','description':'Awesome','products':[['a',1.99],['b',2.99]],'spotID':1,'Organization':'Anteater','latitude':33.643384,'longitude':-117.842071},{'headline':'AntTrails2','description':'More awesome','products':[['c',3.99],['d',4.99]],'spotID':2,'Organization':'Anteater2','latitude':33.644072,'longitude':-117.845236}]    
   vendors = {'vendors':tmp_list}
-  header = template('header', "")
+  header = template('header', home="active", vendor="", about="")
   content = template('buyer', vendors)
   footer = template('footer',"")
-  return header + content + footer
+  confirmation = """
+  <script>
+    alert("Your reservation is complete! Please note that official reservations must be made through the Student Center and not through antTrails.                                                                 Thank you!");
+  </script>"""
 
-@bottle.get('/database')
-def home():
-  t1 = Test(test_property = 10)
-  t1.test_property = 11
-  t1.put()
-  t = Test.all()
-  print t.get().test_property
-  return "Database test"
+  if request.get_cookie("submittedForm") == "yes":
+    response.set_cookie("submittedForm", "no")
+    content = template('buyer', vendors)
+    return header + content + footer + confirmation
+  else:
+    return header + content + footer 
+
+# @bottle.get('/database')
+# def home():
+#   t1 = Test(test_property = 10)
+#   t1.test_property = 11
+#   t1.put()
+#   t = Test.all()
+#   print t.get().test_property
+#   return "Database test"
 
 @bottle.get('/imgur')
 def home():
@@ -45,16 +55,16 @@ def home():
   return "imgur"
 
 
-@bottle.get('/fakebuyer')
-def home():
+# @bottle.get('/fakebuyer')
+# def home():
   
-  o1 = Occupant.query()
+#   o1 = Occupant.query()
 
-  test = ""
-  for t in o1:
-  	test += t.headline
+#   test = ""
+#   for t in o1:
+#   	test += t.headline
 
-  return test
+#   return test
 
 def vendor_to_longlat(spreadsheet):
   '''Making a dictionary from Tech Beckas spreadsheet'''
@@ -73,7 +83,7 @@ def vendor_to_longlat(spreadsheet):
 
 @bottle.get('/vendor')
 def home():
-  header = template('header', "")
+  header = template('header', home="", vendor="active", about="")
   content = template('vendor', message = "", hl = "" , org = "", pl = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
@@ -100,11 +110,11 @@ def home():
     occupantKey = occupant.put()
     o = Occupant.get_by_id(sn)
 
-    #window.alert("Thank you for reserving your Spot! You will now be redirected to the main page.");
+    response.set_cookie("submittedForm", "yes")
     redirect('/')
 
   else:
-    header = template('header', "")
+    header = template('header', home="", vendor="active", about="")
     content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
     footer = template('footer',"")
 
