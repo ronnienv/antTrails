@@ -56,6 +56,21 @@ def home():
 
   return test
 
+def vendor_to_longlat(spreadsheet):
+  '''Making a dictionary from Tech Beckas spreadsheet'''
+  sheet = open(spreadsheet, 'r')
+  sheet = sheet.readlines()
+  vendor_longlat = {}
+  for item in range(len(sheet)):
+    sheet[item]=sheet[item].split(',')
+  for item in sheet:
+    try:
+      item[2] = item[2].strip('\n')
+      vendor_longlat.update({item[0]:(item[1],item[2])})
+    except:
+      pass
+
+
 @bottle.get('/vendor')
 def home():
   header = template('header', "")
@@ -108,4 +123,5 @@ def home():
 def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
+
 
