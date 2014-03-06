@@ -70,16 +70,31 @@ def home():
 
 @bottle.post('/vendor')
 def home():
-  # header = template('header', "")
-  # content = template('vendor',"")
-  # footer = template('footer',"")
-  thankYou = "Form Submitted! Thank you!" 
+
+  pl = request.forms.get('productList')
+
+
+  header = template('header', "")
+  content = template('vendor',pl)
+  footer = template('footer',"")
+
+  return header + content + footer
+
   sn = request.forms.get('spotNumber')
+
+  snDatabase = Occupant.get_by_id(sn)
+
+  if snDatabase != None:
+    return "1"
+  else:
+    return "2"
+
   hl = request.forms.get('headline')
   org = request.forms.get('organization')
   pl = request.forms.get('productList')
   desc = request.forms.get('description')
   pw = request.forms.get('password')
+
 
 
   occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
