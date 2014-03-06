@@ -74,50 +74,40 @@ def vendor_to_longlat(spreadsheet):
 @bottle.get('/vendor')
 def home():
   header = template('header', "")
-  content = template('vendor',"")
+  content = template('vendor', hl = "" , org = "", pl = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
 
-  @bottle.get('/testdatabase')
-  def home():
-    header = template('header', "")
 
 
 @bottle.post('/vendor')
 def home():
 
-  pl = request.forms.get('productList')
-
-
-  header = template('header', "")
-  content = template('vendor',pl)
-  footer = template('footer',"")
-
-  return header + content + footer
-
   sn = request.forms.get('spotNumber')
-
-  snDatabase = Occupant.get_by_id(sn)
-
-  if snDatabase != None:
-    return "1"
-  else:
-    return "2"
-
+  pl = request.forms.get('productList')
   hl = request.forms.get('headline')
   org = request.forms.get('organization')
   pl = request.forms.get('productList')
   desc = request.forms.get('description')
   pw = request.forms.get('password')
 
-
-
-  occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
-  occupantKey = occupant.put()
-
-  o = Occupant.get_by_id(sn)
   
-  return o.headline 
+
+  snDatabase = Occupant.get_by_id(sn)
+
+  if snDatabase == None:
+    occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
+    occupantKey = occupant.put()
+    o = Occupant.get_by_id(sn)
+
+    return "Spot was added to the database!"
+
+  else:
+    header = template('header', "")
+    content = template('vendor', hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+    footer = template('footer',"")
+
+    return header + content + footer
     
 @bottle.error(404)
 def error_404(error):

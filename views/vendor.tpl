@@ -8,26 +8,26 @@
 		ex. 24 
 		</p>
 		
-		Headline:<p style="font-size:small; color:#4775ff"><input type="text" name="headline" maxlength="40" required> 
+		Headline:<p style="font-size:small; color:#4775ff"><input type="text" name="headline" maxlength="40" value = "{{hl}}" required> 
 		ex. Free Cats!!!
 		</p>
 		
-		Organization:<p style="font-size:small; color:#4775ff"><input type="text" name="organization" maxlength="40" required>
+		Organization:<p style="font-size:small; color:#4775ff"><input type="text" name="organization" maxlength="40"  value = "{{org}}" required>
 		ex. Cat Lovers Anonymous
 		</p>
 		
-		[Product List]:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="productList" form="reservations" maxlength="300"></textarea>
+		[Product List]:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="productList" form="reservations" maxlength="300">{{pl}}</textarea>
 		<!-- enter example -->
 		</p>
 		
 		[Upload image...]
 		<p></p>
 		
-		Description:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="description" form="reservations" maxlength="300"></textarea> 
+		Description:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="description" form="reservations" maxlength="300">{{desc}}</textarea> 
 		<!-- enter example -->
 		</p>
 		
-		Password:<p style="font-size:small; color:#4775ff"><input type="text" name="password" maxlength="15">
+		Password:<p style="font-size:small; color:#4775ff"><input type="text" name="password" value="{{pw}}" maxlength="15">
 		<!-- enter example -->
 		</p>
 		
