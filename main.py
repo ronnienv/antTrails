@@ -70,6 +70,10 @@ def vendor_to_longlat(spreadsheet):
   sheet = open(spreadsheet, 'r')
   sheet = sheet.readlines()
   vendor_longlat = {}
+
+  #s = Spot(id = "item[0]", latitude = "item[2]", longitude = "item[1]", location_image = "", spot_id ="item[0]")
+  #s.put()
+
   for item in range(len(sheet)):
     sheet[item]=sheet[item].split(',')
   for item in sheet:
@@ -142,9 +146,17 @@ def isValidSpot(s):
       return False
 
 def chooseFile():
-  """<script>
-    window.open(www.google.com);
-  </script>"""
+  <html>
+<head>
+  <title>File Upload</title>
+</head>
+<body>
+  <form method="post" action="/">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+  </form>
+</body>
+</html>
 
 def convertQuery(vendors):
   returner = []

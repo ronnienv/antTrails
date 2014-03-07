@@ -12,8 +12,9 @@ class Occupant(ndb.Model):
   report = ndb.IntegerProperty()
 
 class Spot(ndb.Model):
-  location = ndb.GeoPtProperty(required=True)
-  spot_id = ndb.IntegerProperty(required=True)
+  longitude = ndb.StringProperty(required=True)
+  latitude = ndb.StringProperty(required=True)
+  spot_id = ndb.StringProperty(required=True)
   location_image = ndb.StringProperty(required=True)
   general_area = ndb.StringProperty(required=True)
 
