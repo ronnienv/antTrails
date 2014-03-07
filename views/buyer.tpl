@@ -34,7 +34,7 @@
 	  <script>
 	  
 	  var myCenter=new google.maps.LatLng(33.645854,-117.842681);
-	  
+	 
 	  function initialize()
 	  {
 		var mapProp = {
@@ -66,11 +66,27 @@
 	      		map.panTo(myCenter);
 	   		 	});
 			}
-		  	
+
 	  	});
+	  	google.maps.event.addListener(map, 'zoom_changed', function() {
+
+			if(map.getZoom() < 15)
+				map.setZoom(17)
+
+	  	});
+		new google.maps.Marker({
+		  		position: new google.maps.LatLng(33.648295,-117.842519),
+		  		map:map
+		  	})
+		new google.maps.Marker({
+		  		position: new google.maps.LatLng(33.648354,-117.842507),
+		  		map:map
+		  	})
 	  }
 
 	  google.maps.event.addDomListener(window, 'load', initialize);
+
+
 	  </script>
 
 
