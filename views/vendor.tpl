@@ -1,6 +1,6 @@
 <div id="form">
 
-<div id="title"><h1>Spot Occupant Form</h1></div>
+<div id="title"><a href="/"> <img src= assets\spotocform.jpg> </a></div>
 <p style="color:#CC0000">{{message}}</p>
 		<p style="font-size:small;"> *required field </p>
 	<div id="formcontent">
