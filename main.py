@@ -71,15 +71,13 @@ def vendor_to_longlat(spreadsheet):
   sheet = sheet.readlines()
   vendor_longlat = {}
 
-  #s = Spot(id = "item[0]", latitude = "item[2]", longitude = "item[1]", location_image = "", spot_id ="item[0]", general_area ="")
-  #s.put()
-
   for item in range(len(sheet)):
     sheet[item]=sheet[item].split(',')
   for item in sheet:
     try:
       item[2] = item[2].strip('\n')
-      vendor_longlat.update({item[0]:(item[1],item[2])})
+      s = Spot(id = "item[0]", latitude = "item[2]", longitude = "item[1]", location_image = "", spot_id ="item[0]", general_area ="")
+      s.put()
     except:
       pass
 vendor_to_longlat('LongituteLatitutde.txt')
