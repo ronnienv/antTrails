@@ -70,7 +70,7 @@
 	  	});
 	  	google.maps.event.addListener(map, 'zoom_changed', function() {
 
-			if(map.getZoom() < 15)
+			if(map.getZoom() < 16)
 				map.setZoom(17)
 
 	  	});

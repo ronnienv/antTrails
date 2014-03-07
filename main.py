@@ -7,6 +7,7 @@ handler.
 # import the Bottle framework
 from bottle import Bottle,route, run, template, static_file, get, post, request, redirect, response
 from antTrailsDatabase import Occupant, Spot
+from google.appengine.ext import ndb
 import datetime, pyimgur, time
 
 # Run the Bottle wsgi application. We don't need to call run() since our
@@ -37,7 +38,7 @@ def home():
   footer = template('footer',"")
   confirmation = """
   <script>
-    alert("Your reservation is complete! Please note that official reservations must be made through the Student Center and not through antTrails.                                                                 Thank you!");
+    alert("Your reservation is complete! Please note that official reservations must be made through the Student Center and not through antTrails. Also, please note that the spots reset at 12am everyday. \\n\\nThank you!");
   </script>"""
 
   if request.get_cookie("submittedForm") == "yes":
@@ -46,6 +47,10 @@ def home():
     return header + content + footer + confirmation
   else:
     return header + content + footer 
+
+@bottle.get('/clear')
+def home():
+  ndb.delete_multi(Occupant.query().fetch(keys_only=True))
 
 @bottle.get('/imgur')
 def home():
@@ -105,7 +110,7 @@ def home():
       occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = sn, organization = org, spot_image = "spot_image", password = pw, report = 0)
       occupant.put()
      
-      time.sleep(23)
+      time.sleep(1)
       response.set_cookie("submittedForm", "yes")
       redirect('/')
 
