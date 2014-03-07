@@ -19,11 +19,7 @@ def home():
   vendor = Occupant.query()
   output = ""
   for v in vendor:
-    output += v.headline
-    output += v.description
-    output += v.product_list
-    output += v.organization
-    output += v.spot_id
+    output += str(v)
   return output
 
 @bottle.get('/adddata')
@@ -79,7 +75,7 @@ def home():
 
 #   test = ""
 #   for t in o1:
-#   	test += t.headline
+#   	test += t.headl  ine
 
 #   return test
 
