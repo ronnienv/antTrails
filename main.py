@@ -162,7 +162,7 @@ def error_404(error):
 def validSpot(s):
   try:
     int(s)
-    if s > 0 and s < 999:
+    if s > 0 or s < 999:
       return True
     else:
       return False
