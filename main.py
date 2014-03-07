@@ -14,12 +14,29 @@ import pyimgur
 # application is embedded within an App Engine WSGI application server.
 bottle = Bottle()
 
+@bottle.get('/test')
+def home():
+  vendor = Occupant.query()
+  output = ""
+  for v in vendor:
+    output += v.headline
+    output += v.description
+    output += v.product_list
+    output += v.organization
+    output += v.spot_id
+  return output
+
+@bottle.get('/adddata')
+def home():
+  o = Occupant(id = 'sn', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o.put()
 
 
 @bottle.get('/')
 def home():
-  tmp_list = [{'headline':'AntTrails','description':'Awesome','products':[['a',1.99],['b',2.99]],'spotID':1,'Organization':'Anteater','latitude':33.643384,'longitude':-117.842071},{'headline':'AntTrails2','description':'More awesome','products':[['c',3.99],['d',4.99]],'spotID':2,'Organization':'Anteater2','latitude':33.644072,'longitude':-117.845236}]    
-  vendors = {'vendors':tmp_list}
+  #tmp_list = [{'headline':'AntTrails','description':'Awesome','products':[['a',1.99],['b',2.99]],'spotID':1,'Organization':'Anteater','latitude':33.643384,'longitude':-117.842071},{'headline':'AntTrails2','description':'More awesome','products':[['c',3.99],['d',4.99]],'spotID':2,'Organization':'Anteater2','latitude':33.644072,'longitude':-117.845236}]    
+  vendors = Occupant.query()
+  #vendors = {'vendors':tmp_list}
   header = template('header', home="active", vendor="", about="")
   content = template('buyer', vendors)
   footer = template('footer',"")
@@ -88,6 +105,7 @@ def home():
   content = template('vendor', message = "", hl = "" , org = "", pl = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
+
 
 
 

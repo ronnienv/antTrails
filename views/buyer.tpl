@@ -11,15 +11,17 @@
         </tr>
       </thead>
       <tbody>
-       %for v in vendors:
+      	{{vendors}}
+     <!--  %for v in vendors:
        <tr>
-         <td>{{v['headline']}}</td>
-         <td>{{v['description']}}</td>
-         <td>{{v['products']}}</td>
-         <td>{{v['Organization']}}</td>
-         <td>{{v['spotID']}}</td>
+         <td>{{v.headline}}</td>
+         <td>{{v.description}}</td>
+         <td>{{v.product_list}}</td>
+         <td>{{v.organization}}</td>
+         <td>{{v.spot_id}}</td>
        </tr>
        %end
+ 	 -->
 	  </tbody>
 	</table>
 </div>
