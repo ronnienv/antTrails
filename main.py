@@ -17,10 +17,10 @@ bottle = Bottle()
 
 @bottle.get('/adddata')
 def home():
-  o = Occupant(id = '0', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o1 = Occupant(id = '1', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o2 = Occupant(id = '2', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o3 = Occupant(id = '3', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o = Occupant(id = '123', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o1 = Occupant(id = '12', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o2 = Occupant(id = '13', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o3 = Occupant(id = '23', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
   o.put()
   o1.put()
   o2.put()
@@ -54,6 +54,7 @@ def home():
 
 @bottle.get('/imgur')
 def home():
+  chooseFile()
   CLIENT_ID = "023b858ecdb2d0c"
   CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
   im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
@@ -120,7 +121,7 @@ def home():
 
   else:
     header = template('header', home="", vendor="active", about="")
-    content = template('vendor', message = "*Sorry, the Spot Number must be a valid number value.*", hl = hl, org = org, desc = desc, pw = pw)
+    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", hl = hl, org = org, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer
@@ -133,12 +134,17 @@ def error_404(error):
 def isValidSpot(s):
   try:
     int(s)
-    if s > 0 and s < 314:
+    if s > 0 or s < 314:
       return True
     else:
       return False
   except ValueError:
       return False
+
+def chooseFile():
+  """<script>
+    window.open(www.google.com);
+  </script>"""
 
 def convertQuery(vendors):
   returner = []
