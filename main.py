@@ -161,7 +161,12 @@ def convertQuery(vendors):
   return returner
 
 
-
+@bottle.get('/about')
+def home():
+  header = template('header', home="", vendor="", about="active")
+  content = template('about')
+  footer = template('footer',"")
+  return header + content + footer
 
 
 

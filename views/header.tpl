@@ -34,7 +34,7 @@
         <ul class="nav nav-pills pull-right">
           <li class="{{home}}"><a href="/">Home</a></li>
           <li class="{{vendor}}"><a href="/vendor">Reserve</a></li>
-          <li class="{{about}}"><a href="#">About</a></li>
+          <li class="{{about}}"><a href="/about">About</a></li>
         </ul>
        </div>
   <div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
