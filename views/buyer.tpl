@@ -1,5 +1,5 @@
 <div id="leftCol">
-	<div id="title"><h1>Spot Occupants</h1></div>
+	<div id="title"><a href="/"> <img src= assets\spotoc.jpg> </a></div>
     <table class="table table-striped">
       <thead>
         <tr>
