@@ -171,11 +171,7 @@ def home():
   footer = template('footer',"")
   return header + content + footer
 
-
-
-
-
-
-
-
-
+@bottle.get('/prompt')
+def home():
+  prompt = template('prompt',"")
+  return prompt
