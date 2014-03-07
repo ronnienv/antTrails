@@ -25,6 +25,7 @@ def home():
   o1.put()
   o2.put()
   o3.put()
+  vendor_to_longlat('LongituteLatitutde.txt')
 
 
 @bottle.get('/')
@@ -50,7 +51,9 @@ def home():
 
 @bottle.get('/clear')
 def home():
-  ndb.delete_multi(Occupant.query().fetch(keys_only=True))
+  #ndb.delete_multi(Occupant.query().fetch(keys_only=True))
+  #ndb.delete_multi(Occupant.query().fetch(keys_only=True))
+  ndb.delete_multi(Spot.query().fetch(keys_only=True))
 
 @bottle.get('/imgur')
 def home():
