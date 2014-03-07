@@ -1,5 +1,5 @@
-
 <div id="leftCol">
+	<div id="title"><h1>Spot Occupants</h1></div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -98,7 +98,6 @@ p { margin:5px 0 10px 0; }
 #leftCol{
 	float: left;
 	width: 40%;
-	overflow-y: scroll;
 	padding-left: 20px;
 	padding-right: 10px
 	padding-bottom: 10px;

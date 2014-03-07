@@ -136,7 +136,7 @@ def error_404(error):
 def isValidSpot(s):
   try:
     int(s)
-    if s > 0 or s < 999:
+    if s > 0 or s < 314:
       return True
     else:
       return False
