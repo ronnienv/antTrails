@@ -101,13 +101,12 @@ def home():
   desc = request.forms.get('description')
   pw = request.forms.get('password')
 
-  
-
-  snDatabase = Occupant.get_by_id(sn)
-
   if isValidSpot(sn):
+    snInt = int(sn)
+    snInt = str(snInt)
+    snDatabase = Occupant.get_by_id(snInt)
     if snDatabase == None:
-      occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = sn, organization = org, spot_image = "spot_image", password = pw, report = 0)
+      occupant = Occupant(id = snInt, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = "spot_image", password = pw, report = 0)
       occupant.put()
      
       time.sleep(1)
