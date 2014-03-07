@@ -17,10 +17,10 @@ bottle = Bottle()
 
 @bottle.get('/adddata')
 def home():
-  o = Occupant(id = '0', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o1 = Occupant(id = '1', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o2 = Occupant(id = '2', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o3 = Occupant(id = '3', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o = Occupant(id = '0', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o1 = Occupant(id = '1', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o2 = Occupant(id = '2', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o3 = Occupant(id = '3', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
   o.put()
   o1.put()
   o2.put()
@@ -83,7 +83,7 @@ vendor_to_longlat('LongituteLatitutde.txt')
 @bottle.get('/vendor')
 def home():
   header = template('header', home="", vendor="active", about="")
-  content = template('vendor', message = "", hl = "" , org = "", pl = "", desc = "", pw = "")
+  content = template('vendor', message = "", hl = "" , org = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
 
@@ -94,10 +94,8 @@ def home():
 def home():
 
   sn = request.forms.get('spotNumber')
-  pl = request.forms.get('productList')
   hl = request.forms.get('headline')
   org = request.forms.get('organization')
-  pl = request.forms.get('productList')
   desc = request.forms.get('description')
   pw = request.forms.get('password')
 
@@ -106,7 +104,7 @@ def home():
     snInt = str(snInt)
     snDatabase = Occupant.get_by_id(snInt)
     if snDatabase == None:
-      occupant = Occupant(id = snInt, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = "spot_image", password = pw, report = 0)
+      occupant = Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = "spot_image", password = pw, report = 0)
       occupant.put()
      
       time.sleep(1)
@@ -115,14 +113,14 @@ def home():
 
     else:
       header = template('header', home="", vendor="active", about="")
-      content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+      content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, desc = desc, pw = pw)
       footer = template('footer',"")
 
       return header + content + footer
 
   else:
     header = template('header', home="", vendor="active", about="")
-    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", hl = hl, org = org, pl = pl, desc = desc, pw = pw)
+    content = template('vendor', message = "*Sorry, the Spot Number must be a valid number value.*", hl = hl, org = org, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer
@@ -135,7 +133,7 @@ def error_404(error):
 def isValidSpot(s):
   try:
     int(s)
-    if s > 0 or s < 314:
+    if s > 0 and s < 314:
       return True
     else:
       return False
@@ -148,7 +146,6 @@ def convertQuery(vendors):
     returner.append({
         'headline' : v.headline, 
         'description' : v.description,
-        'product_list' : v.product_list,
         'date_time' : v.date_time,
         'spot_id' : v.spot_id,
         'organization' : v.organization,

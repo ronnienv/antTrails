@@ -4,7 +4,6 @@ from google.appengine.ext import ndb
 class Occupant(ndb.Model):
   headline = ndb.StringProperty(required=True)
   description = ndb.StringProperty()
-  product_list = ndb.StringProperty()
   date_time = ndb.DateTimeProperty(required=True)
   spot_id = ndb.StringProperty(required=True)
   organization = ndb.StringProperty()

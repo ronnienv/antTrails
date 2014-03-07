@@ -18,10 +18,6 @@
 		ex. Cat Lovers Anonymous
 		</p>
 		
-		[Product List]:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="productList" form="reservations" maxlength="300">{{pl}}</textarea>
-		<!-- enter example -->
-		</p>
-		
 		[Upload image...]
 		<p></p>
 		
