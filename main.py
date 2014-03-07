@@ -17,22 +17,33 @@ bottle = Bottle()
 @bottle.get('/test')
 def home():
   vendor = Occupant.query()
-  output = ""
-  for v in vendor:
-    output += str(v)
-  return output
+  output = convertQuery(vendor)
+  #output = [{'headline': 'hello'}]
+  returner = str(output)
+#  for v in output:
+#    returner += str(v)
+ #   returner += "adfkajhflkadhflkjadhflkh"
+  return returner
 
 @bottle.get('/adddata')
 def home():
-  o = Occupant(id = 'sn', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o = Occupant(id = '0', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o1 = Occupant(id = '1', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o2 = Occupant(id = '2', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o3 = Occupant(id = '3', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
   o.put()
+  o1.put()
+  o2.put()
+  o3.put()
 
 
 @bottle.get('/')
 def home():
   #tmp_list = [{'headline':'AntTrails','description':'Awesome','products':[['a',1.99],['b',2.99]],'spotID':1,'Organization':'Anteater','latitude':33.643384,'longitude':-117.842071},{'headline':'AntTrails2','description':'More awesome','products':[['c',3.99],['d',4.99]],'spotID':2,'Organization':'Anteater2','latitude':33.644072,'longitude':-117.845236}]    
-  vendors = Occupant.query()
-  #vendors = {'vendors':tmp_list}
+ 
+  query = Occupant.query()
+  tmp_list = convertQuery(query)
+  vendors = {'vendors':tmp_list}
   header = template('header', home="active", vendor="", about="")
   content = template('buyer', vendors)
   footer = template('footer',"")
@@ -157,6 +168,31 @@ def validSpot(s):
       return False
   except ValueError:
       return False
+
+def convertQuery(vendors):
+  returner = []
+  for v in vendors:
+    returner.append({
+        'headline' : v.headline, 
+        'description' : v.description,
+        'product_list' : v.product_list,
+        'date_time' : v.date_time,
+        'spot_id' : v.spot_id,
+        'organization' : v.organization,
+        'spot_image' : v.spot_image,
+        'password' : v.password,
+        'report' : v.report
+      })
+
+  return returner
+
+
+
+
+
+
+
+
 
 
 
