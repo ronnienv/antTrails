@@ -40,14 +40,15 @@
 		var mapProp = {
 		  center:myCenter,
 		  zoom:17,
-		  mapTypeId:google.maps.MapTypeId.ROADMAP
+		  mapTypeId:google.maps.MapTypeId.ROADMAP,
+		  streetViewControl : false,
+		  minZoom : 16
 		};
 		var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
 		map.setTilt(0);
 
 		var marker=new google.maps.Marker({position:myCenter});
 		marker.setMap(map);
-
 
 		var infowindow = new google.maps.InfoWindow({
   			content:"TECH BECKA!"
@@ -68,12 +69,7 @@
 			}
 
 	  	});
-	  	google.maps.event.addListener(map, 'zoom_changed', function() {
 
-			if(map.getZoom() < 16)
-				map.setZoom(17)
-
-	  	});
 		new google.maps.Marker({
 		  		position: new google.maps.LatLng(33.648295,-117.842519),
 		  		map:map
