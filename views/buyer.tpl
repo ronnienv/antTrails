@@ -33,21 +33,22 @@
 
 	  <script>
 	  
-	  var myCenter=new google.maps.LatLng(33.645854,-117.842681);
+	  var mapCenter=new google.maps.LatLng(33.645854,-117.842681);
 	 
 	  function initialize()
 	  {
-		var mapProp = {
-		  center:myCenter,
+		var mapControls = {
+		  center:mapCenter,
 		  zoom:17,
 		  mapTypeId:google.maps.MapTypeId.ROADMAP,
 		  streetViewControl : false,
-		  minZoom : 16
+		  minZoom : 16,
+		  panControl : false,
+		  tilt: 0
 		};
-		var map=new google.maps.Map(document.getElementById("googleMap"), mapProp);
-		map.setTilt(0);
+		var map=new google.maps.Map(document.getElementById("googleMap"), mapControls);
 
-		var marker=new google.maps.Marker({position:myCenter});
+		var marker=new google.maps.Marker({position:mapCenter});
 		marker.setMap(map);
 
 		var infowindow = new google.maps.InfoWindow({
@@ -58,13 +59,23 @@
   		 infowindow.open(map,marker);
  		 });
 		
+		google.maps.event.addListener(map, 'zoom_changed', function() {
+
+			if(map.getZoom() > 18)
+				map.setMapTypeId(google.maps.MapTypeId.SATELLITE)
+			if(map.getZoom() <= 18)
+				map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
+
+	  	});
+
+
 		google.maps.event.addListener(map, 'dragend', function() {
 
 			var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
 			if(!bounds.contains(map.getCenter()))	
 			{
 				window.setTimeout(function() {
-	      		map.panTo(myCenter);
+	      		map.panTo(mapCenter);
 	   		 	});
 			}
 
