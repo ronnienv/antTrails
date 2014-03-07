@@ -124,7 +124,7 @@ def home():
 
   snDatabase = Occupant.get_by_id(sn)
 
-  if type(sn) is int:
+  if isValidSpot(sn):
     if snDatabase == None:
       occupant = Occupant(id = sn, headline = hl, description = desc, product_list = pl, date_time = datetime.datetime.now(), spot_id = int(sn), organization = org, spot_image = "spot_image", password = pw, report = 0)
       occupantKey = occupant.put()
@@ -151,6 +151,16 @@ def home():
 def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
+
+def validSpot(s):
+  try:
+    int(s)
+    if s > 0 and s < 999:
+      return True
+    else:
+      return False
+  except ValueError:
+      return False
 
 
 
