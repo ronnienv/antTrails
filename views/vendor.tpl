@@ -19,8 +19,9 @@
 		ex. Cat Lovers Anonymous
 		</p>
 		
-		[Upload image...]
-		<p></p>
+		Upload image
+		<p style="font-size:small; color:#4775ff"><input type="file" name="image_url">
+		</p>
 		
 		Description:<p style="font-size:small; color:#4775ff"><textarea rows="4" cols="50" name="description" form="reservations" maxlength="300">{{desc}}</textarea> 
 		<!-- enter example -->

@@ -57,7 +57,6 @@ def home():
 
 @bottle.get('/imgur')
 def home():
-  chooseFile()
   CLIENT_ID = "023b858ecdb2d0c"
   CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
   im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
@@ -66,6 +65,14 @@ def home():
   header = template('header',  home="active", vendor="", about="") 
   footer = template('footer',"")
   return header + link + footer
+
+
+def uploadImage(img_url): 
+  CLIENT_ID = "023b858ecdb2d0c"
+  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
+  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
+  image = im.upload_image(path = img_url, title= "Test upload")
+  return image.link
 
 
 def vendor_to_longlat(spreadsheet):
@@ -104,13 +111,15 @@ def home():
   org = request.forms.get('organization')
   desc = request.forms.get('description')
   pw = request.forms.get('password')
+  img_url = request.forms.get('image_url')
+  #img = uploadImage(img_url)
 
   if isValidSpot(sn):
     snInt = int(sn)
     snInt = str(snInt)
     snDatabase = Occupant.get_by_id(snInt)
     if snDatabase == None:
-      occupant = Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = "spot_image", password = pw, report = 0)
+      occupant = Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = img_url, password = pw, report = 0)
       occupant.put()
      
       time.sleep(1)
