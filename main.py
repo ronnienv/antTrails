@@ -17,10 +17,10 @@ bottle = Bottle()
 
 @bottle.get('/adddata')
 def home():
-  o = Occupant(id = '0', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o1 = Occupant(id = '1', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o2 = Occupant(id = '2', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o3 = Occupant(id = '3', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o = Occupant(id = '123', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o1 = Occupant(id = '12', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o2 = Occupant(id = '13', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
+  o3 = Occupant(id = '23', headline = 'hl', description = 'desc', product_list = 'pl', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
   o.put()
   o1.put()
   o2.put()
@@ -54,6 +54,7 @@ def home():
 
 @bottle.get('/imgur')
 def home():
+  chooseFile()
   CLIENT_ID = "023b858ecdb2d0c"
   CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
   im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
@@ -141,6 +142,11 @@ def isValidSpot(s):
       return False
   except ValueError:
       return False
+
+def chooseFile():
+  """<script>
+    window.open(www.google.com);
+  </script>"""
 
 def convertQuery(vendors):
   returner = []
