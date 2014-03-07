@@ -71,7 +71,7 @@ def vendor_to_longlat(spreadsheet):
   sheet = sheet.readlines()
   vendor_longlat = {}
 
-  #s = Spot(id = "item[0]", latitude = "item[2]", longitude = "item[1]", location_image = "", spot_id ="item[0]")
+  #s = Spot(id = "item[0]", latitude = "item[2]", longitude = "item[1]", location_image = "", spot_id ="item[0]", general_area ="")
   #s.put()
 
   for item in range(len(sheet)):
