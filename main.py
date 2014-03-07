@@ -143,8 +143,6 @@ def isValidSpot(s):
   except ValueError:
       return False
 
-def chooseFile():
-  "<html><head><title>File Upload</title></head><body><form method=\"post\" action="/"><input type="file" name="file" /><input type=\"submit\" value=\"Upload\" /></form></body></html>"
 
 def convertQuery(vendors):
   returner = []
