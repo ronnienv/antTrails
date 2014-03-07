@@ -76,7 +76,7 @@ def vendor_to_longlat(spreadsheet):
   for item in sheet:
     try:
       item[2] = item[2].strip('\n')
-      s = Spot(id = item[0], latitude = item[2], longitude = item[1], location_image = "", spot_id =item[0], general_area ="")
+      s = Spot(id = item[0], latitude = item[1], longitude = item[2], location_image = "", spot_id =item[0], general_area ="")
       s.put()
     except:
       pass
@@ -161,12 +161,7 @@ def convertQuery(vendors):
   return returner
 
 
-@bottle.get('/about')
-def home():
-  header = template('header', home="", vendor="", about="active")
-  content = template('about')
-  footer = template('footer',"")
-  return header + content + footer
+
 
 
 
