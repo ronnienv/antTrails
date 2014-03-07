@@ -11,7 +11,7 @@
       </thead>
       <tbody>
        %for v in vendors:
-       <tr>
+       <tr onclick="popit('http://www.google.com')">
 		 <td>{{v['headline']}}</td>
          <td>{{v['description']}}</td>
          <td>{{v['organization']}}</td>
@@ -21,6 +21,14 @@
 	  </tbody>
 	</table>
 </div>
+
+<script>
+
+
+function popit(url){
+    newwindow = window.open(url, '', "status=yes, height=500; width=500; resizeable=no");
+}
+
 
 <!-- /.table-responsive -->
 
