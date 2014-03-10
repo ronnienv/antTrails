@@ -5,13 +5,9 @@
 
   <script src="//code.jquery.com/jquery-1.9.1.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
-    body { font-size: 12px; }
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
+    input.text { margin-bottom:12px; width:90%; padding: 3px; }
+    fieldset { padding:0; border:0; margin-top:10px; }
     div#users-contain { width: 350px; margin: 20px 0; }
     div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
     div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left;}
@@ -19,9 +15,11 @@
     .validateTips { border: 1px solid transparent; padding: 0.3em; }
     .ui-dialog-titlebar-close {visibility: hidden;}
     .ui-dialog-titlebar {background-color: #3366FF; color: #ffffff; padding: 5px;}
-    .ui-dialog-title .ui-dialog-buttonpane{padding: 5px;}
+    .ui-dialog-title {padding: 5px;}
     .ui-dialog-content {padding-left: 5px; padding-right: 6px; padding-bottom: 5px;}
-    .ui-dialog {border-style:solid; border-width:1px; border-color: #3366FF; width: 200px;}
+    .ui-dialog {border-style:solid; border-width:1px; border-color: #3366FF;}
+    .ui-dialog-buttonpane {padding-left: 5px; padding-bottom: 5px;}
+    button {padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; }
   </style>
   <script>
   $(function() {
@@ -53,7 +51,7 @@
               "<td>" + password.val() + "</td>" +
             "</tr>" );
             $( this ).dialog( "close" );
-          }
+          }   
         },
         Cancel: function() {
           $( this ).dialog( "close" );
@@ -63,6 +61,8 @@
         allFields.val( "" ).removeClass( "ui-state-error" );
       }
     });
+
+    $( "#dialog-form" ).dialog( "option", "width", 250 );
  
     $( "#edit-spot" )
       .button()

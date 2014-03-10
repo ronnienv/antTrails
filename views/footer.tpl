@@ -1,5 +1,5 @@
       <div id="footer">
-		<hr align="center" width="90%">
+		<hr stlye="align:"center"; width:"90%"; margin-top:"10px"; margin-bottom: "10px;";">
         <p>&copy; Don't Smile At Strangers 2014</p>
       </div>
 
