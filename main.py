@@ -35,13 +35,18 @@ def home():
   vendors = {'vendors':tmp_vendors}
 
   query = Spot.query()
-  tmp_spots = convertSpots(query)
-  spots = {'spots':tmp_spots}
+  query_spots = convertSpots(query)
+  
 
-  for s in tmp_spots:
+  tmp_spots = []
+
+  for s in query_spots:
     for v in tmp_vendors:
       if v['spot_id'] == s['spot_id']:
-        print s
+        tmp_spots.append(s)
+        print s['spot_id']
+
+  spots = {'spots':tmp_spots}
 
   header = template('header', home="active", vendor="", edit="", about="")
   content = template('buyer', vendors, spots)
