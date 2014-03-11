@@ -49,6 +49,15 @@
 		var marker=new google.maps.Marker({position:mapCenter});
 		marker.setMap(map);
 
+		%for s in spots:
+			%#for v in vendors:
+				%#if v['spot_id'] == s['spot_id']:
+					var temp_latlng = new google.maps.LatLng({{s['latitude']}},{{s['longitude']}})
+
+					var marker=new google.maps.Marker({position: temp_latlng,
+														map: map});
+		%end
+
 		var infowindow = new google.maps.InfoWindow({
   			content:"TECH BECKA!"
  		 });
@@ -79,10 +88,6 @@
 
 	  	});
 
-		new google.maps.Marker({
-		  		position: new google.maps.LatLng(33.648295,-117.842519),
-		  		map:map
-		  	})
 		new google.maps.Marker({
 		  		position: new google.maps.LatLng(33.648354,-117.842507),
 		  		map:map

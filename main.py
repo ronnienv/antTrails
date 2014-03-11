@@ -31,11 +31,16 @@ def home():
 @bottle.get('/')
 def home():
   query = Occupant.query()
-  tmp_list = convertQuery(query)
-  vendors = {'vendors':tmp_list}
+  tmp_vendors = convertVendors(query)
+  vendors = {'vendors':tmp_vendors}
+
+  query = Spot.query()
+  tmp_spots = convertSpots(query)
+  spots = {'spots':tmp_spots}
+
 
   header = template('header', home="active", vendor="", edit="", about="")
-  content = template('buyer', vendors)
+  content = template('buyer', vendors, spots)
   footer = template('footer',"")
   confirmation = """
   <script>
@@ -44,14 +49,13 @@ def home():
 
   if request.get_cookie("submittedForm") == "yes":
     response.set_cookie("submittedForm", "no")
-    content = template('buyer', vendors)
+    content = template('buyer', vendors, spots)
     return header + content + footer + confirmation
   else:
     return header + content + footer 
 
 @bottle.get('/clear')
 def home():
-  #ndb.delete_multi(Occupant.query().fetch(keys_only=True))
   ndb.delete_multi(Occupant.query().fetch(keys_only=True))
   #ndb.delete_multi(Spot.query().fetch(keys_only=True))
 
@@ -264,7 +268,20 @@ def isValidSpot(s):
       return False
 
 
-def convertQuery(vendors):
+def convertSpots(spots):
+  returner = []
+  for s in spots:
+    returner.append({
+      'longitude' : s.longitude,
+      'latitude' : s.latitude,
+      'spot_id' : s. spot_id,
+      'location_image' : s.location_image,
+      'general_area' : s.general_area
+      })
+
+  return returner
+
+def convertVendors(vendors):
   returner = []
   for v in vendors:
     returner.append({
