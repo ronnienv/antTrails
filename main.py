@@ -42,15 +42,24 @@ def home():
   header = template('header', home="active", vendor="", edit="", about="")
   content = template('buyer', vendors, spots)
   footer = template('footer',"")
+  deleted = """
+  <script>
+    alert("The spot entered and it's information has been deleted. \\n\\nThank you!");
+  </script>"""
   confirmation = """
   <script>
     alert("Your reservation is complete! Please note that official reservations must be made through the Student Center and not through antTrails. Also, please note that the spots reset at 12am everyday. \\n\\nThank you!");
-  </script>"""
+  </script>
+  """
 
   if request.get_cookie("submittedForm") == "yes":
     response.set_cookie("submittedForm", "no")
     content = template('buyer', vendors, spots)
     return header + content + footer + confirmation
+  elif request.get_cookie("deleted") == "yes":
+    response.set_cookie("deleted", "no")
+    content = template('buyer', vendors, spots)
+    return header + content + footer + deleted
   else:
     return header + content + footer 
 
@@ -172,18 +181,26 @@ def home():
         
       else:
         if snDatabase.password == pw:
-          response.set_cookie("edittingForm", "yes")
-          snInt = int(sn)
-          snInt = str(snInt)
-          response.set_cookie("originalSN", snInt)
-          hl = snDatabase.headline
-          org = snDatabase.organization
-          desc = snDatabase.description
+          #if the user chose to delete a spot, here they go!
+          if request.forms.get("delete") == "Delete Spot":
+            spot = Occupant.get_by_id(str(request.get_cookie("originalSN")))
+            spot.key.delete()
+            response.set_cookie("deleted", "yes")
+            redirect('/')
 
-          header = template('header', home="", vendor="", edit="active", about="")
-          content = template('vendor', message = "Spot Information has been loaded!", sn = sn, hl = hl, org = org, desc = desc, pw = pw)
-          footer = template('footer',"")
-          return header + content + footer
+          else:
+            response.set_cookie("edittingForm", "yes")
+            snInt = int(sn)
+            snInt = str(snInt)
+            response.set_cookie("originalSN", snInt)
+            hl = snDatabase.headline
+            org = snDatabase.organization
+            desc = snDatabase.description
+
+            header = template('header', home="", vendor="", edit="active", about="")
+            content = template('vendor', message = "Spot Information has been loaded!", sn = sn, hl = hl, org = org, desc = desc, pw = pw)
+            footer = template('footer',"")
+            return header + content + footer
 
         else:
           header = template('header', home="", vendor="", edit="active", about="")

@@ -8,10 +8,8 @@
 		</p>
 	Password:<p style="font-size:small; color:#4775ff"><input type="password" name="password"> 
 		</p>
-	<input type="submit" value="Edit"> 
-	<a href="/">
-		<button type="buttton" id="delete-spot" onclick= %response.set_cookie("delete", "yes")>Delete Spot</button>
-	</a>
+	<input type="submit" name="submit" value="Edit"> 
+	<input type="submit" name="delete" value="Delete Spot"> 
 </form>
 </div>
 
