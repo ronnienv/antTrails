@@ -150,6 +150,7 @@ def home():
 
 @bottle.post('/edit')
 def home():
+  #if the user has not submitted the new editted form, it will enter this branch
   if request.get_cookie("edittingForm") == "no":
     sn = request.forms.get('spotNumber')
     pw = request.forms.get('password')
@@ -161,14 +162,16 @@ def home():
 
       if snDatabase == None:
         header = template('header', home="", vendor="", edit="active", about="")
-        content = template('edit', message="*spotNumber has not been reserved yet. A spot cannot be editted unless it has been reserved.")
+        content = template('edit', message="*The entered Spot Number has not been reserved yet.")
         footer = template('footer',"")
         return header + content + footer
         
       else:
         if snDatabase.password == pw:
           response.set_cookie("edittingForm", "yes")
-          response.set_cookie("originalSN", sn)
+          snInt = int(sn)
+          snInt = str(snInt)
+          response.set_cookie("originalSN", snInt)
           hl = snDatabase.headline
           org = snDatabase.organization
           desc = snDatabase.description
@@ -190,6 +193,8 @@ def home():
       footer = template('footer',"")
       return header + content + footer
 
+  #if the user has submitted a new editted spot form it will enter this branch
+  #this branch is basically the check in vnedor that validates input
   else:
     sn = request.forms.get('spotNumber')
     hl = request.forms.get('headline')
