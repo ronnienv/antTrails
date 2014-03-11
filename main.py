@@ -38,6 +38,10 @@ def home():
   tmp_spots = convertSpots(query)
   spots = {'spots':tmp_spots}
 
+  for s in tmp_spots:
+    for v in tmp_vendors:
+      if v['spot_id'] == s['spot_id']:
+        print s
 
   header = template('header', home="active", vendor="", edit="", about="")
   content = template('buyer', vendors, spots)
@@ -291,7 +295,7 @@ def convertSpots(spots):
     returner.append({
       'longitude' : s.longitude,
       'latitude' : s.latitude,
-      'spot_id' : s. spot_id,
+      'spot_id' : s.spot_id,
       'location_image' : s.location_image,
       'general_area' : s.general_area
       })
