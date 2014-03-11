@@ -46,24 +46,26 @@
 		};
 		var map=new google.maps.Map(document.getElementById("googleMap"), mapControls);
 
-		var marker=new google.maps.Marker({position:mapCenter});
-		marker.setMap(map);
+		var marker
+		var temp_latlng
+		var infowindow
 
 		%for s in spots:
-			var temp_latlng = new google.maps.LatLng({{s['latitude']}},{{s['longitude']}})
+			temp_latlng = new google.maps.LatLng({{s['latitude']}},{{s['longitude']}})
 
-			var marker=new google.maps.Marker({position: temp_latlng,
+			marker = new google.maps.Marker({position: temp_latlng,
 													map: map});
+
+			infowindow = new google.maps.InfoWindow({content:{{s['latitude']}}
+	 		 });
+			
 		%end
 
-		var infowindow = new google.maps.InfoWindow({
-  			content:"TECH BECKA!"
- 		 });
-
 		google.maps.event.addListener(marker, 'click', function() {
-  		 infowindow.open(map,marker);
- 		 });
-		
+				infowindow.open(map,marker);
+	 		});
+
+
 		google.maps.event.addListener(map, 'zoom_changed', function() {
 
 			if(map.getZoom() > 18)
