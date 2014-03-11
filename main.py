@@ -34,7 +34,7 @@ def home():
   tmp_list = convertQuery(query)
   vendors = {'vendors':tmp_list}
 
-  header = template('header', home="active", vendor="", about="")
+  header = template('header', home="active", vendor="", edit="", about="")
   content = template('buyer', vendors)
   footer = template('footer',"")
   confirmation = """
@@ -52,8 +52,8 @@ def home():
 @bottle.get('/clear')
 def home():
   #ndb.delete_multi(Occupant.query().fetch(keys_only=True))
-  #ndb.delete_multi(Occupant.query().fetch(keys_only=True))
-  ndb.delete_multi(Spot.query().fetch(keys_only=True))
+  ndb.delete_multi(Occupant.query().fetch(keys_only=True))
+  #ndb.delete_multi(Spot.query().fetch(keys_only=True))
 
 @bottle.get('/imgur')
 def home():
@@ -62,7 +62,7 @@ def home():
   im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
   image = im.get_image('S1jmapR')
   link = "<img src="+image.link_medium_thumbnail+">"
-  header = template('header',  home="active", vendor="", about="") 
+  header = template('header',  home="active", vendor="", edit="", about="") 
   footer = template('footer',"")
   return header + link + footer
 
@@ -95,8 +95,8 @@ vendor_to_longlat('LongituteLatitutde.txt')
 
 @bottle.get('/vendor')
 def home():
-  header = template('header', home="", vendor="active", about="")
-  content = template('vendor', message = "", hl = "" , org = "", desc = "", pw = "")
+  header = template('header', home="", vendor="active", edit="", about="")
+  content = template('vendor', message = "", sn = "", hl = "" , org = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
 
@@ -127,18 +127,121 @@ def home():
       redirect('/')
 
     else:
-      header = template('header', home="", vendor="active", about="")
-      content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", hl = hl, org = org, desc = desc, pw = pw)
+      header = template('header', home="", vendor="active", edit="", about="")
+      content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
       footer = template('footer',"")
 
       return header + content + footer
 
   else:
-    header = template('header', home="", vendor="active", about="")
-    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", hl = hl, org = org, desc = desc, pw = pw)
+    header = template('header', home="", vendor="active", edit="", about="")
+    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer
+
+@bottle.get('/edit')
+def home():
+  header = template('header', home="", vendor="", edit="active", about="")
+  content = template('edit', message="")
+  footer = template('footer',"")
+  response.set_cookie("edittingForm", "no")
+  return header + content + footer
+
+@bottle.post('/edit')
+def home():
+  if request.get_cookie("edittingForm") == "no":
+    sn = request.forms.get('spotNumber')
+    pw = request.forms.get('password')
+
+    if isValidSpot(sn):
+      snInt = int(sn)
+      snInt = str(snInt)
+      snDatabase = Occupant.get_by_id(snInt)
+
+      if snDatabase == None:
+        header = template('header', home="", vendor="", edit="active", about="")
+        content = template('edit', message="*spotNumber has not been reserved yet. A spot cannot be editted unless it has been reserved.")
+        footer = template('footer',"")
+        return header + content + footer
+        
+      else:
+        if snDatabase.password == pw:
+          response.set_cookie("edittingForm", "yes")
+          response.set_cookie("originalSN", sn)
+          hl = snDatabase.headline
+          org = snDatabase.organization
+          desc = snDatabase.description
+
+          header = template('header', home="", vendor="", edit="active", about="")
+          content = template('vendor', message = "Spot Information has been loaded!", sn = sn, hl = hl, org = org, desc = desc, pw = pw)
+          footer = template('footer',"")
+          return header + content + footer
+
+        else:
+          header = template('header', home="", vendor="", edit="active", about="")
+          content = template('edit', message="*Invalid Password")
+          footer = template('footer',"")
+          return header + content + footer
+
+    else:
+      header = template('header', home="", vendor="", edit="active", about="")
+      content = template('edit', message = "*Sorry, the Spot Number must be a number value.*")
+      footer = template('footer',"")
+      return header + content + footer
+
+  else:
+    sn = request.forms.get('spotNumber')
+    hl = request.forms.get('headline')
+    org = request.forms.get('organization')
+    desc = request.forms.get('description')
+    pw = request.forms.get('password')
+    img_url = request.forms.get('image_url')
+
+    if isValidSpot(sn):
+      snInt = int(sn)
+      snInt = str(snInt)
+      snDatabase = Occupant.get_by_id(snInt)
+
+      if snDatabase == None or snInt == str(request.get_cookie("originalSN")):
+        occupant = Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = img_url, password = pw, report = 0)
+        occupant.put()
+
+        #if the new spot number does not exist that means that changed the spot number
+        #so the old can be deleted because it is being replaced
+        if snDatabase == None:
+          oldSpot = Occupant.get_by_id(str(request.get_cookie("originalSN")))
+          oldSpot.key.delete()
+
+        response.set_cookie("edittingForm", "no")
+        response.set_cookie("originalSN", "no")
+
+        time.sleep(1)
+        response.set_cookie("submittedForm", "yes")
+        redirect('/')
+
+      else:
+        header = template('header', home="", vendor="", edit="active", about="")
+        content = template('vendor', message = "*Sorry, the Spot Number entered has already been taken.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
+        footer = template('footer',"")
+
+        return header + content + footer
+
+    else:
+      header = template('header', home="", vendor="", edit="active", about="")
+      content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
+      footer = template('footer',"")
+
+      return header + content + footer
+      
+  
+
+@bottle.get('/about')
+def home():
+  header = template('header', home="", vendor="", edit="", about="active")
+  content = template('about',"")
+  footer = template('footer',"")
+  return header + content + footer
     
 @bottle.error(404)
 def error_404(error):
@@ -171,16 +274,3 @@ def convertQuery(vendors):
       })
 
   return returner
-
-
-@bottle.get('/about')
-def home():
-  header = template('header', home="", vendor="", about="active")
-  content = template('about',"")
-  footer = template('footer',"")
-  return header + content + footer
-
-@bottle.get('/prompt')
-def home():
-  prompt = template('prompt',"")
-  return prompt

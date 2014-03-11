@@ -1,56 +1,7 @@
 <div id="form">
 
-<div id="title"><a href="/"> <img src= assets\spotocform.jpg> </a> 
-  <script>
-  $(function() {
-    var spotNumber = $( "#spotNumber" ),
-      password = $( "#password" ),
-      allFields = $( [] ).add( spotNumber ).add( password ),
-      tips = $( ".validateTips" );
- 
-    function updateTips( t ) {
-      tips
-        .text( t )
-        .addClass( "ui-state-highlight" );
-      setTimeout(function() {
-        tips.removeClass( "ui-state-highlight", 1500 );
-      }, 500 );
-    }
- 
-    $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      modal: true,
-      buttons: {
-        "Edit": function() {
-          var bValid = true;
-          allFields.removeClass( "ui-state-error" );
- 
-          if ( bValid ) {
-            $( "#users tbody" ).append( "<tr>" +
-              "<td>" + spotNumber.val() + "</td>" +
-              "<td>" + password.val() + "</td>" +
-            "</tr>" );
-            $( this ).dialog( "close" );
-          }   
-        },
-        Cancel: function() {
-          $( this ).dialog( "close" );
-        }
-      },
-      close: function() {
-        allFields.val( "" ).removeClass( "ui-state-error" );
-      }
-    });
+<div id="title"><a href="/";> <img src= assets\spotocform.jpg> </a> </div>
 
-    $( "#dialog-form" ).dialog( "option", "width", 250 );
- 
-    $( "#edit-spot" )
-      .button()
-      .click(function() {
-        $( "#dialog-form" ).dialog( "open" );
-      });
-  });
-  </script>
 <body>
 
 <p style="color:#CC0000">{{message}}</p>
@@ -58,7 +9,7 @@
 	<div id="formcontent">
 	<form method="post" id="reservations">
 
-		Spot Number:*<p style="font-size:small; color:#4775ff"><input type="text" name="spotNumber" maxlength="3" required> 
+		Spot Number:*<p style="font-size:small; color:#4775ff"><input type="text" name="spotNumber" maxlength="3" value = "{{sn}}" required> 
 		ex. 24 
 		</p>
 		
@@ -82,27 +33,17 @@
 		<!-- enter example -->
 		</p>
 
-		<div style="width:25%">
-			<input type="submit"> 
-			<div id="dialog-form" title="Edit Spot Form">
-			  <form>
-			  <fieldset>
-			    <label for="spotNumber">Spot Number</label>
-			    <input type="text" name="spotNumber" id="spotNumber" class="text ui-widget-content ui-corner-all">
-			    <label for="password">Password</label>
-			    <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all">
-			  </fieldset>
-			  </form>
-			</div>
-			<div>
-				<button id="edit-spot">Edit Spot</button>
-			</div>
-		</div>
+
+		<input type="submit"> 
 
 	<form>
 	</div>
 </div>
 <style>
+
+body{
+	height:600px;
+}
 
 #form{
     padding-left: 20px;
@@ -114,8 +55,7 @@ input[type=submit] {padding:5px 15px; background:#3366FF; color: #ffffff; border
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
-	float:left;
-	margin-right: 15px;}
+}
 
 input.text { 
 	margin-bottom:12px; width:92%; padding: 3px; 
@@ -125,7 +65,7 @@ fieldset {
 	padding:10px; border:0; margin-top:10px; 
 }
 
-div#users-contain { 
+/*div#users-contain { 
 	width: 350px; margin: 20px 0; 
 }
 
@@ -167,7 +107,7 @@ div#users-contain table td, div#users-contain table th {
 
 .ui-dialog-buttonpane {
 	padding-left: 10px; padding-bottom: 10px;
-}
+}*/
 
 button {
 	padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-right: 15px;

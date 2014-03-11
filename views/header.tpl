@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <title>UCI AntTrails</title>
 
@@ -36,6 +34,7 @@
         <ul class="nav nav-pills pull-right">
           <li class="{{home}}"><a href="/">Home</a></li>
           <li class="{{vendor}}"><a href="/vendor">Reserve</a></li>
+          <li class="{{edit}}"><a href="/edit">Edit</a></li>
           <li class="{{about}}"><a href="/about">About</a></li>
         </ul>
        </div>
