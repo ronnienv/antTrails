@@ -1,5 +1,5 @@
 <div id="form" title="Edit Spot Form" style="width:300px";>
-<h1> Edit Form</h1>
+<h1> Edit Spot</h1>
 <p style="color:#CC0000">{{message}}</p>
 <form method="post" id="edit">
 	<p style="font-size:small;"> *required field </p>
@@ -8,7 +8,10 @@
 		</p>
 	Password:<p style="font-size:small; color:#4775ff"><input type="password" name="password"> 
 		</p>
-	<input type="submit"> 
+	<input type="submit" value="Edit"> 
+	<a href="/">
+		<button type="buttton" id="delete-spot" onclick= %response.set_cookie("delete", "yes")>Delete Spot</button>
+	</a>
 </form>
 </div>
 
@@ -42,7 +45,7 @@ fieldset {
 }
 
 button {
-	padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-right: 15px;
+	padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-left: 10px;
 }
 </style>
 
