@@ -39,7 +39,7 @@
           <li class="{{about}}"><a href="/about">About</a></li>
         </ul>
        </div>
-  <div><a href="/"> <img src= assets\anttraillogo.jpg> </a></div>
+  <div><a href="/"> <img src="/assets/anttraillogo.jpg" alt="Logo"> </a></div>
   </body>
   </div>
 </div>

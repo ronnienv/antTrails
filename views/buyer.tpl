@@ -34,7 +34,7 @@ $(document).ready(function(){
 </script>
 
 <div id="leftCol" style>
-	<div id="title"><a href="/"> <img src= assets\spotoc.jpg> </a></div>
+	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg" alt="Spot Occupants"> </a></div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -50,7 +50,8 @@ $(document).ready(function(){
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
          <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
-         <td><p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
+         <td style="padding-right: 0px; padding-left: 0px";>
+         	<p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
 			<button id="hide" value="{{v['spot_id']}}">Hide</button>
 			<button id="show" value="{{v['spot_id']}}">View</button>
          </td>
@@ -146,7 +147,7 @@ p { margin:5px 0 10px 0; }
 	padding-left: 20px;
 	padding-right: 10px
 	padding-bottom: 10px;
-	overflow: scroll;
+	overflow-y: scroll;
 	}
 #rightCol{
 	width: 60%;
