@@ -51,7 +51,7 @@ body{
     margin: 0;
 }
 
-input[type=submit] {padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none;
+input[type=submit] {padding:5px 15px; background:#428bca; color: #ffffff; border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 

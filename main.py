@@ -53,11 +53,15 @@ def home():
   footer = template('footer',"")
   deleted = """
   <script>
+    $(window).load(function() {
     alert("The spot entered and it's information has been deleted. \\n\\nThank you!");
+    });
   </script>"""
   confirmation = """
   <script>
+    $(window).load(function() {
     alert("Your reservation is complete! Please note that official reservations must be made through the Student Center and not through antTrails. Also, please note that the spots reset at 12am everyday. \\n\\nThank you!");
+    });
   </script>
   """
 

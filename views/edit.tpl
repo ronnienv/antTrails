@@ -43,7 +43,7 @@ fieldset {
 }
 
 button {
-	padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-left: 10px;
+	padding:5px 15px; background:#428bca; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-left: 10px;
 }
 </style>
 

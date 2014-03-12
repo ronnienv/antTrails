@@ -161,7 +161,7 @@ p { margin:5px 0 10px 0; }
 	width: ;
 }
 
-button {padding:2px 12px; background:#3366FF; color: #ffffff; border:0 none;
+button {padding:2px 12px; background:#428bca; color: #ffffff; border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
