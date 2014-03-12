@@ -84,19 +84,15 @@ $(document).ready(function(){
 		};
 		var map=new google.maps.Map(document.getElementById("googleMap"), mapControls);
 
-		var marker
-		var temp_latlng
-		var infowindow
+		var marker;
+		var temp_latlng;
+		var infowindow;
 
 		%for s in spots:
-			temp_latlng = new google.maps.LatLng({{s['latitude']}},{{s['longitude']}})
+			temp_latlng = new google.maps.LatLng({{s[0]['latitude']}}, {{s[0]['longitude']}});
 
 			marker = new google.maps.Marker({position: temp_latlng,
 													map: map});
-
-			infowindow = new google.maps.InfoWindow({content:{{s['latitude']}}
-	 		 });
-			
 		%end
 
 		google.maps.event.addListener(marker, 'click', function() {

@@ -34,17 +34,15 @@ def home():
   tmp_vendors = convertVendors(query)
   vendors = {'vendors':tmp_vendors}
 
-  query = Spot.query()
-  query_spots = convertSpots(query)
-  
-
+  #query = Spot.query()
+  #query_spots = convertSpots(query)
   tmp_spots = []
 
-  for s in query_spots:
-    for v in tmp_vendors:
-      if v['spot_id'] == s['spot_id']:
-        tmp_spots.append(s)
-        print s['spot_id']
+  for v in tmp_vendors:
+    spot = Spot.get_by_id(v['spot_id'])
+    if spot != None:
+      tmp = convertOneSpot(spot)
+      tmp_spots.append(tmp)
 
   spots = {'spots':tmp_spots}
 
@@ -182,8 +180,10 @@ def home():
     pw = request.forms.get('password')
 
     if isValidSpot(sn):
+      #gets rid of leading 0s
       snInt = int(sn)
       snInt = str(snInt)
+
       snDatabase = Occupant.get_by_id(snInt)
 
       if snDatabase == None:
@@ -289,15 +289,9 @@ def error_404(error):
   return 'Sorry, Nothing at this URL.'
 
 def isValidSpot(s):
-  try:
-    s = int(s)
-    if s > 0 and s < 314:
-      return True
-    else:
-      return False
-  except ValueError:
-      return False
-#condition is off
+
+  spot = Spot.get_by_id(s)
+  return spot != None
 
 def convertSpots(spots):
   returner = []
@@ -309,6 +303,17 @@ def convertSpots(spots):
       'location_image' : s.location_image,
       'general_area' : s.general_area
       })
+
+  return returner
+
+def convertOneSpot(spot):
+  returner=[{
+      'longitude' : spot.longitude,
+      'latitude' : spot.latitude,
+      'spot_id' : spot.spot_id,
+      'location_image' : spot.location_image,
+      'general_area' : spot.general_area
+      }]
 
   return returner
 
