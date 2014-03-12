@@ -4,15 +4,29 @@ $(document).ready(function(){
 	%for v in vendors:
 	var str = "{{v['description']}}"
 	var size = str.length;
-	var id={{v['spot_id']}};
+
 	if (size > 0)
 	{
-		$("p[id="description"][value={{v['spot_id']}}]").hide();
-		document.write(size + " " + id + ":Content ");
+		$("p[id=\"description\"][value={{v['spot_id']}}]").hide();
+		$("button[id=\"hide\"][value={{v['spot_id']}}]").hide();
+
+		$("button[id=\"hide\"][value={{v['spot_id']}}]").click(function(){
+			$("p[id=\"description\"][value={{v['spot_id']}}]").hide();
+			$("button[id=\"hide\"][value={{v['spot_id']}}]").hide();
+			$("button[id=\"show\"][value={{v['spot_id']}}]").show();
+		});
+
+		$("button[id=\"show\"][value={{v['spot_id']}}]").click(function(){
+			$("p[id=\"description\"][value={{v['spot_id']}}]").show();
+			$("button[id=\"show\"][value={{v['spot_id']}}]").hide();
+			$("button[id=\"hide\"][value={{v['spot_id']}}]").show();
+		});
 	}
 	else
 	{
-		document.write(size + " " + id + ":No Content ");
+		$("p[id=\"description\"][value={{v['spot_id']}}]").hide();
+		$("button[id=\"hide\"][value={{v['spot_id']}}]").hide();
+		$("button[id=\"show\"][value={{v['spot_id']}}]").hide();
 	}
 	%end
 
