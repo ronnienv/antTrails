@@ -1,0 +1,4 @@
+cron:
+- description: daily deletion
+  url: /tasks/johntheunicorn
+  schedule: every day 00:00

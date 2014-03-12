@@ -65,52 +65,8 @@ fieldset {
 	padding:10px; border:0; margin-top:10px; 
 }
 
-/*div#users-contain { 
-	width: 350px; margin: 20px 0; 
-}
-
-div#users-contain table { 
-	margin: 1em 0; border-collapse: collapse; width: 100%; 
-}
-
-div#users-contain table td, div#users-contain table th { 
-	border: 1px solid #eee; padding: .6em 10px; text-align: left;
-}
-
-.ui-dialog .ui-state-error { 
-	padding: .3em; 
-}
-
-.validateTips { 
-	border: 1px solid transparent; padding: 0.3em; 
-}
-
-.ui-dialog-titlebar-close {
-	visibility: hidden;
-}
-
-.ui-dialog-titlebar {
-	background-color: #3366FF; color: #ffffff; padding: 5px;
-}
-
-.ui-dialog-title {
-	padding: 5px;
-}
-
-.ui-dialog-content {
-	adding-left: 5px; padding-right: 6px; padding-bottom: 5px;
-}
-
-.ui-dialog {
-	border-style:solid; border-width:1px; border-color: #3366FF;
-}
-
-.ui-dialog-buttonpane {
-	padding-left: 10px; padding-bottom: 10px;
-}*/
-
 button {
-	padding:5px 15px; background:#3366FF; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-right: 15px;
+	padding:5px 15px; background:#428bca; color: #ffffff; border:0 none; cursor:pointer; -webkit-border-radius: 5px; border-radius: 5px; margin-right: 15px;
 }
 </style>
 
