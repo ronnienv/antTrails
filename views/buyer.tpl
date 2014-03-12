@@ -1,21 +1,53 @@
+<script>
+$(document).ready(function(){
+	var str = document.getElementById("description");
+	var size = str.length;
+	if (size > 10)
+	{
+		$("p#description").hide();
+		$("button#hide").hide();
+		  $("#hide").click(function(){
+		    $("p#description").hide();
+		    $("button#hide").hide();
+		    $("button#show").show();
+		  });
+		  $("#show").click(function(){
+		    $("p#description").show();
+		    $("button#show").hide();
+		    $("button#hide").show();
+		  });
+	}
+	else
+	{
+		$("p#description").hide();
+		$("button#hide").hide();
+		$("button#show").hide();
+	}
+});
+</script>
+
 <div id="leftCol">
 	<div id="title"><a href="/"> <img src= assets\spotoc.jpg> </a></div>
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Headline</th>
-          <th>Description</th>
           <th>Organization</th>
           <th>Spot Number</th>
+          <th style="width: 180px";>Description</th>
         </tr>
       </thead>
       <tbody>
        %for v in vendors:
        <tr>
 		 <td>{{v['headline']}}</td>
-         <td>{{v['description']}}</td>
          <td>{{v['organization']}}</td>
          <td>{{v['spot_id']}}</td>
+         <td>{{v['description']}} 
+			<p id="description">faffeafasadasdadasdadsda</p>
+			<button id="hide">Hide</button>
+			<button id="show">Read More</button>
+         </td>
        </tr>
        %end
 	  </tbody>
@@ -118,5 +150,17 @@ p { margin:5px 0 10px 0; }
 	padding-left: 10px;
 	padding-right: 15px;
 	padding-bottom: 10px;}
+
+#description{
+	width: ;
+}
+
+button {padding:2px 12px; background:#3366FF; color: #ffffff; border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-size: small;
+    width: 87px;
+
 </style>
 

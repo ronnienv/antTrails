@@ -65,7 +65,7 @@ def home():
     response.set_cookie("submittedForm", "no")
     content = template('buyer', vendors, spots)
     return header + content + footer + confirmation
-  elif request.get_cookie("deleted") == "yes":
+  elif request.get_cookie("deleted") == "yes":  
     response.set_cookie("deleted", "no")
     content = template('buyer', vendors, spots)
     return header + content + footer + deleted
@@ -144,7 +144,7 @@ def home():
       occupant = Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = img_url, password = pw, report = 0)
       occupant.put()
      
-      time.sleep(1)
+      time.sleep(2)
       response.set_cookie("submittedForm", "yes")
       redirect('/')
 
@@ -192,9 +192,10 @@ def home():
         if snDatabase.password == pw:
           #if the user chose to delete a spot, here they go!
           if request.forms.get("delete") == "Delete Spot":
-            spot = Occupant.get_by_id(str(request.get_cookie("originalSN")))
+            spot = Occupant.get_by_id(snInt)
             spot.key.delete()
             response.set_cookie("deleted", "yes")
+            time.sleep(2)
             redirect('/')
 
           else:
@@ -251,7 +252,7 @@ def home():
         response.set_cookie("edittingForm", "no")
         response.set_cookie("originalSN", "no")
 
-        time.sleep(1)
+        time.sleep(2)
         response.set_cookie("submittedForm", "yes")
         redirect('/')
 
@@ -285,14 +286,14 @@ def error_404(error):
 
 def isValidSpot(s):
   try:
-    int(s)
-    if s > 0 or s < 314:
+    s = int(s)
+    if s > 0 and s < 314:
       return True
     else:
       return False
   except ValueError:
       return False
-
+#condition is off
 
 def convertSpots(spots):
   returner = []
