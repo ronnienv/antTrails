@@ -226,9 +226,13 @@ def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
 
-@bottle.get('/adddata')
+@bottle.get('/addSpotsToDatabase')
 def home():
   vendor_to_longlat('LongituteLatitutde.txt')
+
+@bottle.get('/addOccupantData')
+def home():
+  Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = img_url, password = pw, report = 0)
 
 @bottle.get('/clear')
 def home():

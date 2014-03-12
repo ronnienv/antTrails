@@ -33,7 +33,7 @@ $(document).ready(function(){
 });
 </script>
 
-<div id="leftCol">
+<div id="leftCol" style>
 	<div id="title"><a href="/"> <img src= assets\spotoc.jpg> </a></div>
     <table class="table table-striped">
       <thead>
@@ -52,7 +52,7 @@ $(document).ready(function(){
          <td>{{v['spot_id']}}</td>
          <td><p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
 			<button id="hide" value="{{v['spot_id']}}">Hide</button>
-			<button id="show" value="{{v['spot_id']}}">Read More</button>
+			<button id="show" value="{{v['spot_id']}}">View</button>
          </td>
        </tr>
        %end
@@ -142,19 +142,23 @@ p { margin:5px 0 10px 0; }
 #leftCol{
 	float: left;
 	width: 40%;
+	height: 100%;
 	padding-left: 20px;
 	padding-right: 10px
 	padding-bottom: 10px;
+	overflow: scroll;
 	}
 #rightCol{
 	width: 60%;
+	height: 100%;
 	float:left;
 	padding-left: 10px;
 	padding-right: 15px;
-	padding-bottom: 10px;}
+	padding-bottom: 10px;
+	}
 
 #description{
-	width: ;
+	width: 180px;
 }
 
 button {padding:2px 12px; background:#428bca; color: #ffffff; border:0 none;
