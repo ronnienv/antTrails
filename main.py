@@ -14,20 +14,6 @@ import datetime, pyimgur, time
 # application is embedded within an App Engine WSGI application server.
 bottle = Bottle()
 
-
-@bottle.get('/adddata')
-def home():
-  o = Occupant(id = '123', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '123', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o1 = Occupant(id = '12', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '12', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o2 = Occupant(id = '13', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '13', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o3 = Occupant(id = '23', headline = 'hl', description = 'desc', date_time = datetime.datetime.now(), spot_id = '23', organization = 'org', spot_image = "spot_image", password = 'pass', report = 0)
-  o.put()
-  o1.put()
-  o2.put()
-  o3.put()
-  vendor_to_longlat('LongituteLatitutde.txt')
-
-
 @bottle.get('/')
 def home():
   query = Occupant.query()
@@ -74,58 +60,12 @@ def home():
   else:
     return header + content + footer 
 
-@bottle.get('/clear')
-def home():
-  ndb.delete_multi(Occupant.query().fetch(keys_only=True))
-  #ndb.delete_multi(Spot.query().fetch(keys_only=True))
-
-@bottle.get('/imgur')
-def home():
-  CLIENT_ID = "023b858ecdb2d0c"
-  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
-  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
-  image = im.get_image('S1jmapR')
-  link = "<img src="+image.link_medium_thumbnail+">"
-  header = template('header',  home="active", vendor="", edit="", about="") 
-  footer = template('footer',"")
-  return header + link + footer
-
-
-def uploadImage(img_url): 
-  CLIENT_ID = "023b858ecdb2d0c"
-  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
-  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
-  image = im.upload_image(path = img_url, title= "Test upload")
-  return image.link
-
-
-def vendor_to_longlat(spreadsheet):
-  '''Making a dictionary from Tech Beckas spreadsheet'''
-  sheet = open(spreadsheet, 'r')
-  sheet = sheet.readlines()
-  vendor_longlat = {}
-
-  for item in range(len(sheet)):
-    sheet[item]=sheet[item].split(',')
-  for item in sheet:
-    try:
-      item[2] = item[2].strip('\n')
-      s = Spot(id = item[0], latitude = item[1], longitude = item[2], location_image = "", spot_id =item[0], general_area ="")
-      s.put()
-    except:
-      pass
-vendor_to_longlat('LongituteLatitutde.txt')
-
-
 @bottle.get('/vendor')
 def home():
   header = template('header', home="", vendor="active", edit="", about="")
   content = template('vendor', message = "", sn = "", hl = "" , org = "", desc = "", pw = "")
   footer = template('footer',"")
   return header + content + footer
-
-
-
 
 @bottle.post('/vendor')
 def home():
@@ -273,8 +213,6 @@ def home():
       footer = template('footer',"")
 
       return header + content + footer
-      
-  
 
 @bottle.get('/about')
 def home():
@@ -287,6 +225,26 @@ def home():
 def error_404(error):
   """Return a custom 404 error."""
   return 'Sorry, Nothing at this URL.'
+
+@bottle.get('/adddata')
+def home():
+  vendor_to_longlat('LongituteLatitutde.txt')
+
+@bottle.get('/clear')
+def home():
+  ndb.delete_multi(Occupant.query().fetch(keys_only=True))
+  #ndb.delete_multi(Spot.query().fetch(keys_only=True))
+
+@bottle.get('/imgur')
+def home():
+  CLIENT_ID = "023b858ecdb2d0c"
+  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
+  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
+  image = im.get_image('S1jmapR')
+  link = "<img src="+image.link_medium_thumbnail+">"
+  header = template('header',  home="active", vendor="", edit="", about="") 
+  footer = template('footer',"")
+  return header + link + footer
 
 def isValidSpot(s):
 
@@ -332,3 +290,28 @@ def convertVendors(vendors):
       })
 
   return returner
+
+def uploadImage(img_url): 
+  CLIENT_ID = "023b858ecdb2d0c"
+  CLIENT_SECRET = "83234b0ff6b2fce855205f69594811b671448848"
+  im = pyimgur.Imgur(CLIENT_ID, CLIENT_SECRET)
+  image = im.upload_image(path = img_url, title= "Test upload")
+  return image.link
+
+
+def vendor_to_longlat(spreadsheet):
+  '''Making a dictionary from Tech Beckas spreadsheet'''
+  sheet = open(spreadsheet, 'r')
+  sheet = sheet.readlines()
+  vendor_longlat = {}
+
+  for item in range(len(sheet)):
+    sheet[item]=sheet[item].split(',')
+  for item in sheet:
+    try:
+      item[2] = item[2].strip('\n')
+      s = Spot(id = item[0], latitude = item[1], longitude = item[2], location_image = "", spot_id =item[0], general_area ="")
+      s.put()
+    except:
+      pass
+vendor_to_longlat('LongituteLatitutde.txt')
