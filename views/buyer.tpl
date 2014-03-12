@@ -1,28 +1,21 @@
 <script>
 $(document).ready(function(){
-	var str = document.getElementById("description");
+
+	%for v in vendors:
+	var str = "{{v['description']}}"
 	var size = str.length;
-	if (size > 10)
+	var id={{v['spot_id']}};
+	if (size > 0)
 	{
-		$("p#description").hide();
-		$("button#hide").hide();
-		  $("#hide").click(function(){
-		    $("p#description").hide();
-		    $("button#hide").hide();
-		    $("button#show").show();
-		  });
-		  $("#show").click(function(){
-		    $("p#description").show();
-		    $("button#show").hide();
-		    $("button#hide").show();
-		  });
+		$("p[id="description"][value={{v['spot_id']}}]").hide();
+		document.write(size + " " + id + ":Content ");
 	}
 	else
 	{
-		$("p#description").hide();
-		$("button#hide").hide();
-		$("button#show").hide();
+		document.write(size + " " + id + ":No Content ");
 	}
+	%end
+
 });
 </script>
 
@@ -43,10 +36,9 @@ $(document).ready(function(){
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
          <td>{{v['spot_id']}}</td>
-         <td>{{v['description']}} 
-			<p id="description">faffeafasadasdadasdadsda</p>
-			<button id="hide">Hide</button>
-			<button id="show">Read More</button>
+         <td><p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
+			<button id="hide" value="{{v['spot_id']}}">Hide</button>
+			<button id="show" value="{{v['spot_id']}}">Read More</button>
          </td>
        </tr>
        %end
