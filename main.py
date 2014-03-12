@@ -159,7 +159,7 @@ def home():
 
   else:
     header = template('header', home="", vendor="active", edit="", about="")
-    content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
+    content = template('vendor', message = "*Sorry, the spot number must be a valid spot number.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
     footer = template('footer',"")
 
     return header + content + footer
@@ -224,7 +224,7 @@ def home():
 
     else:
       header = template('header', home="", vendor="", edit="active", about="")
-      content = template('edit', message = "*Sorry, the Spot Number must be a number value.*")
+      content = template('edit', message = "*Sorry, the spot number must be a valid spot number.*")
       footer = template('footer',"")
       return header + content + footer
 
@@ -269,7 +269,7 @@ def home():
 
     else:
       header = template('header', home="", vendor="", edit="active", about="")
-      content = template('vendor', message = "*Sorry, the Spot Number must be a number value.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
+      content = template('vendor', message = "*Sorry, the spot number must be a valid spot number.*", sn = "", hl = hl, org = org, desc = desc, pw = pw)
       footer = template('footer',"")
 
       return header + content + footer
