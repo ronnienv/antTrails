@@ -40,7 +40,7 @@ $(document).ready(function(){
         <tr>
           <th>Headline</th>
           <th>Organization</th>
-          <th>Spot Number</th>
+          <th style="width: 110px">Spot Number</th>
           <th style="width: 180px";>Description</th>
         </tr>
       </thead>
@@ -49,7 +49,7 @@ $(document).ready(function(){
        <tr>
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
-         <td>{{v['spot_id']}}</td>
+         <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
          <td><p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
 			<button id="hide" value="{{v['spot_id']}}">Hide</button>
 			<button id="show" value="{{v['spot_id']}}">View</button>
