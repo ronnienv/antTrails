@@ -77,6 +77,7 @@ $(document).ready(function(){
 		var mapControls = {
 		  center:mapCenter,
 		  zoom:17,
+		  mapTypeControl: false,
 		  mapTypeId:google.maps.MapTypeId.ROADMAP,
 		  streetViewControl : false,
 		  minZoom : 16,
@@ -84,6 +85,28 @@ $(document).ready(function(){
 		  tilt: 0
 		};
 		var map = new google.maps.Map(document.getElementById("googleMap"), mapControls);
+
+		google.maps.event.addListener(map, 'dragend', function() {
+			
+			var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
+			if(!bounds.contains(map.getCenter()))	
+			{
+				window.setTimeout(function() {
+	      		map.panTo(mapCenter);
+	   		 	});
+			}
+
+	  	});
+
+	  	
+		google.maps.event.addListener(map, 'zoom_changed', function() {
+
+			if(map.getZoom() > 18)
+				map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+			if(map.getZoom() <= 18)
+				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+
+	  	});
 		var markers = [];
 
 		%for s in spots:
@@ -106,28 +129,7 @@ $(document).ready(function(){
 
 		var markerCluster = new MarkerClusterer(map, markers);
 
-
-		google.maps.event.addListener(map, 'zoom_changed', function() {
-
-			if(map.getZoom() > 18)
-				map.setMapTypeId(google.maps.MapTypeId.HYBRID)
-			if(map.getZoom() <= 18)
-				map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
-
-	  	});
-
-
-		google.maps.event.addListener(map, 'dragend', function() {
-
-			var bounds = new google.maps.LatLngBounds(new google.maps.LatLng(33.6423851,-117.8468299), new google.maps.LatLng(33.6506491,-117.8365209));
-			if(!bounds.contains(map.getCenter()))	
-			{
-				window.setTimeout(function() {
-	      		map.panTo(mapCenter);
-	   		 	});
-			}
-
-	  	});
+		
 
 	  }
 
