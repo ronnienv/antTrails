@@ -120,7 +120,7 @@ $(document).ready(function(){
 
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.open(map, this);
-				var content = '{{s[0]['headline']}}' + ' {{s[0]['organization']}}' + ' {{s[0]['description']}}';
+				var content = '<p>'+'{{s[0]['headline']}}'+'<br />' + ' {{s[0]['organization']}}'+'<br />' + ' {{s[0]['description']}}'+'</p>';
 				infowindow.setContent(content);
 	 		});
 
