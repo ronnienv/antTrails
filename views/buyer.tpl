@@ -37,28 +37,28 @@ $(document).ready(function(){
 <div>
 	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg"	 alt="Spot Occupants"> </a></div>
 	<div id="leftCol">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style="width: 110px">Spot Number</th>
-          <th>Headline</th>
-          <th>Organization</th>
-          <th style="width: 180px">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-       %for v in vendors:
-       <tr id = "id_{{v['pos']}}" onmouseover = "showInfoWindow({{v['pos']}})" onclick = "showInfoWindow({{v['pos']}})">
-       	 <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
+	<table class="table table-striped">
+	  <thead>
+		<tr>
+		  <th style="width: 110px">Spot Number</th>
+		  <th>Headline</th>
+		  <th>Organization</th>
+		  <th style="width: 180px">Description</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	   %for v in vendors:
+	   <tr id = "id_{{v['pos']}}" onmouseover = "showInfoWindow({{v['pos']}})" onclick = "showInfoWindow({{v['pos']}})">
+		 <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
 		 <td>{{v['headline']}}</td>
-         <td>{{v['organization']}}</td>
-         <td style="padding-right: 0px; padding-left: 0px">
-         	<p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
+		 <td>{{v['organization']}}</td>
+		 <td style="padding-right: 0px; padding-left: 0px">
+			<p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
 			<button id="hide" value="{{v['spot_id']}}">Hide</button>
 			<button id="show" value="{{v['spot_id']}}">View</button>
-         </td>
-       </tr>
-       %end
+		 </td>
+	   </tr>
+	   %end
 	  </tbody>
 	</table>
 	</div>
@@ -96,13 +96,13 @@ $(document).ready(function(){
 			if(!bounds.contains(map.getCenter()))	
 			{
 				window.setTimeout(function() {
-	      		map.panTo(mapCenter);
-	   		 	});
+				map.panTo(mapCenter);
+				});
 			}
 
-	  	});
+		});
 
-	  	
+		
 		google.maps.event.addListener(map, 'zoom_changed', function() {
 
 			if(map.getZoom() > 18)
@@ -110,7 +110,7 @@ $(document).ready(function(){
 			if(map.getZoom() <= 18)
 				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
-	  	});
+		});
 		
 
 		%for s in spots:
@@ -125,9 +125,9 @@ $(document).ready(function(){
 				infowindow.open(map, this);
 				var content = '<p>'+'{{s[0]['headline']}}'+'<br />' + ' {{s[0]['organization']}}'+'<br />' + ' {{s[0]['description']}}'+'</p>';
 				infowindow.setContent(content);
-	 		});
+			});
 
-	 		markers.push(marker);
+			markers.push(marker);
 		%end
 
 	  }
@@ -136,15 +136,16 @@ $(document).ready(function(){
 
 	  function showInfoWindow(index){
 
-	  	var temp = parseInt(index);
-	  	google.maps.event.trigger(markers[temp], 'click')
+		var temp = parseInt(index);
+		google.maps.event.trigger(markers[temp], 'click')
 	  };
 
 	  </script>
 
 
 	</head>
-	<div id="googleMap" style="width:100%; height:500px;"></div>
+		<div id="googleMap" style="width: 100%; height: 100%;"></div>
+	</div>
 </div>
 </div>
 
@@ -152,6 +153,9 @@ $(document).ready(function(){
 
 * { margin:0; padding:0; }
 p { margin:5px 0 10px 0; }
+html, body {
+		width: 100%; height: 100%;
+}
 
 #leftCol{
 	float: left;
@@ -160,16 +164,19 @@ p { margin:5px 0 10px 0; }
 	padding-right: 10px;
 	padding-bottom: 10px;
 	overflow-y: auto;
-	height: 500px;
+	height: 100%;
 	}
 #rightCol{
 	width: 60%;
+	height: 100%;
 	float:left;
 	padding-left: 10px;
 	padding-right: 15px;
 	padding-bottom: 10px;
-	height: initial;
 	}
+#table{
+	height: 72%;
+}
 
 @media only screen and (max-device-width: 1200px) {
 	#leftCol{
@@ -181,7 +188,9 @@ p { margin:5px 0 10px 0; }
 		width: 520px;
 		}
 
-	#table{}
+	#table{
+		height: auto;
+	}
 }
 
 #description{
@@ -189,11 +198,11 @@ p { margin:5px 0 10px 0; }
 }
 
 button {padding:2px 12px; background:#428bca; color: #ffffff; border:0 none;
-    cursor:pointer;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; 
-    font-size: small;
-    width: 87px;
+	cursor:pointer;
+	-webkit-border-radius: 5px;
+	border-radius: 5px; 
+	font-size: small;
+	width: 87px;
 }
 
 /*#googleMap {
