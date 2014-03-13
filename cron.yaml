@@ -2,3 +2,4 @@ cron:
 - description: daily deletion
   url: /tasks
   schedule: every day 00:00
+  timezone: US/Pacific
