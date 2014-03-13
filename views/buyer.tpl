@@ -35,7 +35,7 @@ $(document).ready(function(){
 	// var width = $(window).width();
 	// if(width > )
 </script>
-
+<div id="table">
 <div>
 	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg"	 alt="Spot Occupants"> </a></div>
 	<div id="leftCol">
@@ -146,7 +146,8 @@ $(document).ready(function(){
 
 
 	</head>
-	<div id="googleMap" style="width:100%;height:600px;"></div>
+	<div id="googleMap" style="width:100%; height:500px;"></div>
+</div>
 </div>
 
 <style>
@@ -158,9 +159,9 @@ p { margin:5px 0 10px 0; }
 	float: left;
 	width: 40%;
 	padding-left: 20px;
-	padding-right: 10px
+	padding-right: 10px;
 	padding-bottom: 10px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	height: 500px;
 	}
 #rightCol{
@@ -169,8 +170,21 @@ p { margin:5px 0 10px 0; }
 	padding-left: 10px;
 	padding-right: 15px;
 	padding-bottom: 10px;
-	height: 500px;
+	height: initial;
 	}
+
+@media only screen and (max-device-width: 1200px) {
+	#leftCol{
+		width: 520px;
+		height: 400px;
+		}
+
+	#rightCol{
+		width: 520px;
+		}
+
+	#table{}
+}
 
 #description{
 	width: 180px;
@@ -182,9 +196,10 @@ button {padding:2px 12px; background:#428bca; color: #ffffff; border:0 none;
     border-radius: 5px; 
     font-size: small;
     width: 87px;
-
-#googleMap {
-	height: 500px;
 }
+
+/*#googleMap {
+	height: 500px;
+}*/
 </style>
 
