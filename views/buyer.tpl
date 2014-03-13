@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 	  <script>
 	  
-	  var mapCenter=new google.maps.LatLng(33.645854,-117.842681);
+	  var mapCenter=new google.maps.LatLng(33.6465707,-117.8420422);
 	 
 	  function initialize()
 	  {
@@ -83,28 +83,34 @@ $(document).ready(function(){
 		  panControl : false,
 		  tilt: 0
 		};
-		var map=new google.maps.Map(document.getElementById("googleMap"), mapControls);
-
-		var marker;
-		var temp_latlng;
-		var infowindow;
+		var map = new google.maps.Map(document.getElementById("googleMap"), mapControls);
+		var markers = [];
 
 		%for s in spots:
-			temp_latlng = new google.maps.LatLng({{s[0]['latitude']}}, {{s[0]['longitude']}});
+			%print s
+			var temp_latlng = new google.maps.LatLng({{s[0]['latitude']}}, {{s[0]['longitude']}});
 
-			marker = new google.maps.Marker({position: temp_latlng,
+			var marker = new google.maps.Marker({position: temp_latlng,
 													map: map});
+
+			var infowindow = new google.maps.InfoWindow({content: '{{s[0]['latitude']}}'});
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map, this);
+				var content = '{{s[0]['headline']}}' + ' {{s[0]['organization']}}' + ' {{s[0]['description']}}';
+				infowindow.setContent(content);
+	 		});
+
+	 		markers.push(marker);
 		%end
 
-		google.maps.event.addListener(marker, 'click', function() {
-				infowindow.open(map,marker);
-	 		});
+		var markerCluster = new MarkerClusterer(map, markers);
 
 
 		google.maps.event.addListener(map, 'zoom_changed', function() {
 
 			if(map.getZoom() > 18)
-				map.setMapTypeId(google.maps.MapTypeId.SATELLITE)
+				map.setMapTypeId(google.maps.MapTypeId.HYBRID)
 			if(map.getZoom() <= 18)
 				map.setMapTypeId(google.maps.MapTypeId.ROADMAP)
 
@@ -143,7 +149,6 @@ p { margin:5px 0 10px 0; }
 #leftCol{
 	float: left;
 	width: 40%;
-	height: 100%;
 	padding-left: 20px;
 	padding-right: 10px
 	padding-bottom: 10px;
@@ -151,7 +156,6 @@ p { margin:5px 0 10px 0; }
 	}
 #rightCol{
 	width: 60%;
-	height: 100%;
 	float:left;
 	padding-left: 10px;
 	padding-right: 15px;

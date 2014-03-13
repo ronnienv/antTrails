@@ -27,7 +27,7 @@ def home():
   for v in tmp_vendors:
     spot = Spot.get_by_id(v['spot_id'])
     if spot != None:
-      tmp = convertOneSpot(spot)
+      tmp = convertOneSpot(spot,v)
       tmp_spots.append(tmp)
 
   spots = {'spots':tmp_spots}
@@ -268,13 +268,16 @@ def convertSpots(spots):
 
   return returner
 
-def convertOneSpot(spot):
+def convertOneSpot(spot, vendor):
   returner=[{
       'longitude' : spot.longitude,
       'latitude' : spot.latitude,
       'spot_id' : spot.spot_id,
       'location_image' : spot.location_image,
-      'general_area' : spot.general_area
+      'general_area' : spot.general_area,
+      'organization' : vendor['organization'],
+      'description' : vendor['description'],
+      'headline' : vendor['headline'],
       }]
 
   return returner
