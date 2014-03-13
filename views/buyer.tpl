@@ -32,8 +32,8 @@ $(document).ready(function(){
 
 });
 
-	// var width = $(window).width();
-	// if(width > )
+	var height = screen.height;
+
 </script>
 <div id="table">
 <div>
@@ -50,7 +50,7 @@ $(document).ready(function(){
       </thead>
       <tbody>
        %for v in vendors:
-       <tr id = "id_{{v['pos']}}" onclick = "showInfoWindow({{v['pos']}})" >
+       <tr id = "id_{{v['pos']}}" onmouseover = "showInfoWindow({{v['pos']}})" onclick = "showInfoWindow({{v['pos']}})">
        	 <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
@@ -158,19 +158,18 @@ p { margin:5px 0 10px 0; }
 #leftCol{
 	float: left;
 	width: 40%;
-	padding-left: 20px;
+	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
 	overflow-y: auto;
-	height: 500px;
+	height: height;
 	}
 #rightCol{
 	width: 60%;
 	float:left;
-	padding-left: 10px;
-	padding-right: 15px;
+	padding-right: 10px;
 	padding-bottom: 10px;
-	height: initial;
+	height: height;
 	}
 
 @media only screen and (max-device-width: 1200px) {
@@ -183,7 +182,9 @@ p { margin:5px 0 10px 0; }
 		width: 520px;
 		}
 
-	#table{}
+	#table{
+		margin: 10%;
+	}
 }
 
 #description{
