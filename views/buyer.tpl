@@ -178,18 +178,19 @@ html, body {
 	height: 72%;
 }
 
-@media only screen and (max-device-width: 1200px) {
+@media only screen and (max-width: 1200px) {
 	#leftCol{
-		width: 520px;
-		height: 400px;
+		width: 420px;
 		}
 
 	#rightCol{
-		width: 520px;
+		width: 420px;
 		}
 
 	#table{
-		height: auto;
+		height: 100%;
+		margin-right: 12%;
+		margin-left: 8%;
 	}
 }
 
