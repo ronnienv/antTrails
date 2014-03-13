@@ -50,8 +50,7 @@ $(document).ready(function(){
       </thead>
       <tbody>
        %for v in vendors:
-       %print v
-       <tr id = "id_{{v['pos']}}" onclick = 'alert("Row index is: {{v['pos']}}");'>
+       <tr id = "id_{{v['pos']}}" onclick = "showInfoWindow({{v['pos']}})" >
        	 <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
@@ -77,7 +76,8 @@ $(document).ready(function(){
 	  <script>
 	  
 	  var mapCenter=new google.maps.LatLng(33.6465707,-117.8420422);
-	 
+	  var markers = [];
+	  
 	  function initialize()
 	  {
 		var mapControls = {
@@ -113,7 +113,7 @@ $(document).ready(function(){
 				map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
 	  	});
-		var markers = [];
+		
 
 		%for s in spots:
 			var temp_latlng = new google.maps.LatLng({{s[0]['latitude']}}, {{s[0]['longitude']}});
@@ -132,15 +132,15 @@ $(document).ready(function(){
 	 		markers.push(marker);
 		%end
 
-		var markerCluster = new MarkerClusterer(map, markers);
-
-		markerObj =  document.getElementById(markerId);
-		
-
 	  }
 
 	  google.maps.event.addDomListener(window, 'load', initialize);
 
+	  function showInfoWindow(index){
+
+	  	var temp = parseInt(index);
+	  	google.maps.event.trigger(markers[temp], 'click')
+	  };
 
 	  </script>
 
