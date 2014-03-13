@@ -32,8 +32,6 @@ $(document).ready(function(){
 
 });
 
-	var height = screen.height;
-
 </script>
 <div id="table">
 <div>
@@ -162,14 +160,15 @@ p { margin:5px 0 10px 0; }
 	padding-right: 10px;
 	padding-bottom: 10px;
 	overflow-y: auto;
-	height: height;
+	height: 500px;
 	}
 #rightCol{
 	width: 60%;
 	float:left;
-	padding-right: 10px;
+	padding-left: 10px;
+	padding-right: 15px;
 	padding-bottom: 10px;
-	height: height;
+	height: initial;
 	}
 
 @media only screen and (max-device-width: 1200px) {
@@ -182,9 +181,7 @@ p { margin:5px 0 10px 0; }
 		width: 520px;
 		}
 
-	#table{
-		margin: 10%;
-	}
+	#table{}
 }
 
 #description{
