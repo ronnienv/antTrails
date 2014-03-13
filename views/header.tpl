@@ -40,6 +40,7 @@
         </ul>
        </div>
   <div><a href="/"> <img src="/assets/anttraillogo.jpg" alt="Logo"> </a></div>
+<!--   <hr id="topbar"> -->
   </body>
   </div>
 </div>
@@ -55,6 +56,13 @@ p { margin:5px 0 10px 0; }
     padding-bottom: 10px;
     margin: 0;
   }
+}
+
+hr{
+  align:center !important; 
+  width:90% !important; 
+  margin-top:2px !important; 
+  margin-bottom:2px !important; 
 }
 
 </style>

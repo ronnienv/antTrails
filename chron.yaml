@@ -1,4 +1,4 @@
 cron:
 - description: daily deletion
-  url: /tasks/johntheunicorn
+  url: /tasks
   schedule: every day 00:00

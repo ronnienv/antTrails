@@ -31,10 +31,14 @@ $(document).ready(function(){
 	%end
 
 });
+
+	// var width = $(window).width();
+	// if(width > )
 </script>
 
-<div id="leftCol" style>
-	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg" alt="Spot Occupants"> </a></div>
+<div>
+	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg"	 alt="Spot Occupants"> </a></div>
+	<div id="leftCol">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -59,6 +63,7 @@ $(document).ready(function(){
        %end
 	  </tbody>
 	</table>
+	</div>
 </div>
 
 <!-- /.table-responsive -->
@@ -155,6 +160,7 @@ p { margin:5px 0 10px 0; }
 	padding-right: 10px
 	padding-bottom: 10px;
 	overflow-y: scroll;
+	height: 500px;
 	}
 #rightCol{
 	width: 60%;
@@ -162,6 +168,7 @@ p { margin:5px 0 10px 0; }
 	padding-left: 10px;
 	padding-right: 15px;
 	padding-bottom: 10px;
+	height: 500px;
 	}
 
 #description{
@@ -175,5 +182,8 @@ button {padding:2px 12px; background:#428bca; color: #ffffff; border:0 none;
     font-size: small;
     width: 87px;
 
+#googleMap {
+	height: 500px;
+}
 </style>
 
