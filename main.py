@@ -236,10 +236,16 @@ def home():
   o2 =  Occupant(id = "2", headline = "Free drinks!", description = "Answer a simple survey to get a free drink!", date_time = datetime.datetime.now(), spot_id = "2", organization = "Mahjong Club", spot_image = "", password = "", report = 0)
   o3 = Occupant(id = "3", headline = "Resume Critque", description = "Stop by to get your resume up in shape!", date_time = datetime.datetime.now(), spot_id = "3", organization = "Career Center", spot_image = "", password = "", report = 0)
   o4 = Occupant(id = "76", headline = "Study at our Booth!", description = "Come study with us at our booth and learn about stuff!", date_time = datetime.datetime.now(), spot_id = "76", organization = "Study Club", spot_image = "", password = "", report = 0)
+  o5 = Occupant(id = "233", headline = "Cats", description = "These are my cats. I love them. Don't you dare touch them.", date_time = datetime.datetime.now(), spot_id = "233", organization = "Cat lovers anonymous", spot_image = "", password = "", report = 0)
+  o6 = Occupant(id = "314", headline = "Don't Smile at Strangers", description = "Have you ever wanted to see what goes on behind the Don't Smile at Strangers group meetings? Come by to find out! We're always happy to show you!", date_time = datetime.datetime.now(), spot_id = "314", organization = "INFX 151", spot_image = "", password = "", report = 0)
+  o7 = Occupant(id = "106", headline = "ASUCI Elections", description = "Vote today!", date_time = datetime.datetime.now(), spot_id = "106", organization = "ASUCI", spot_image = "", password = "", report = 0)
   o1.put()
   o2.put()
   o3.put()
   o4.put()
+  o5.put()
+  o6.put()
+  o7.put()
 
   return "Occupant Data successfully added!"
 
