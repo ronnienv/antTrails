@@ -232,7 +232,16 @@ def home():
 
 @bottle.get('/addOccupantData')
 def home():
-  Occupant(id = snInt, headline = hl, description = desc, date_time = datetime.datetime.now(), spot_id = snInt, organization = org, spot_image = img_url, password = pw, report = 0)
+  o1 =  Occupant(id = "1", headline = "Selling chicken nuggets!", description = "Chicken nuggets! 5 for $1", date_time = datetime.datetime.now(), spot_id = "1", organization = "Circle K", spot_image = "", password = "", report = 0)
+  o2 =  Occupant(id = "2", headline = "Free drinks!", description = "Answer a simple survey to get a free drink!", date_time = datetime.datetime.now(), spot_id = "2", organization = "Mahjong Club", spot_image = "", password = "", report = 0)
+  o3 = Occupant(id = "3", headline = "Resume Critque", description = "Stop by to get your resume up in shape!", date_time = datetime.datetime.now(), spot_id = "3", organization = "Career Center", spot_image = "", password = "", report = 0)
+  o4 = Occupant(id = "76", headline = "Study at our Booth!", description = "Come study with us at our booth and learn about stuff!", date_time = datetime.datetime.now(), spot_id = "76", organization = "Study Club", spot_image = "", password = "", report = 0)
+  o1.put()
+  o2.put()
+  o3.put()
+  o4.put()
+
+  return "Occupant Data successfully added!"
 
 @bottle.get('/clear')
 def home():
@@ -284,6 +293,7 @@ def convertOneSpot(spot, vendor):
 
 def convertVendors(vendors):
   returner = []
+  i = 0
   for v in vendors:
     returner.append({
         'headline' : v.headline, 
@@ -293,8 +303,10 @@ def convertVendors(vendors):
         'organization' : v.organization,
         'spot_image' : v.spot_image,
         'password' : v.password,
-        'report' : v.report
+        'report' : v.report,
+        'pos' : i
       })
+    i += 1
 
   return returner
 

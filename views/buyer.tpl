@@ -42,19 +42,20 @@ $(document).ready(function(){
     <table class="table table-striped">
       <thead>
         <tr>
+          <th style="width: 110px">Spot Number</th>
           <th>Headline</th>
           <th>Organization</th>
-          <th style="width: 110px">Spot Number</th>
-          <th style="width: 180px";>Description</th>
+          <th style="width: 180px">Description</th>
         </tr>
       </thead>
       <tbody>
        %for v in vendors:
-       <tr>
+       %print v
+       <tr id = "id_{{v['pos']}}" onclick = 'alert("Row index is: {{v['pos']}}");'>
+       	 <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
 		 <td>{{v['headline']}}</td>
          <td>{{v['organization']}}</td>
-         <td style="width: 110px"><center>{{v['spot_id']}}</center></td>
-         <td style="padding-right: 0px; padding-left: 0px";>
+         <td style="padding-right: 0px; padding-left: 0px">
          	<p id="description" value="{{v['spot_id']}}">{{v['description']}}</p>
 			<button id="hide" value="{{v['spot_id']}}">Hide</button>
 			<button id="show" value="{{v['spot_id']}}">View</button>
@@ -115,7 +116,6 @@ $(document).ready(function(){
 		var markers = [];
 
 		%for s in spots:
-			%print s
 			var temp_latlng = new google.maps.LatLng({{s[0]['latitude']}}, {{s[0]['longitude']}});
 
 			var marker = new google.maps.Marker({position: temp_latlng,
@@ -134,6 +134,7 @@ $(document).ready(function(){
 
 		var markerCluster = new MarkerClusterer(map, markers);
 
+		markerObj =  document.getElementById(markerId);
 		
 
 	  }
