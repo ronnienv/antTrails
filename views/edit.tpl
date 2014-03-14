@@ -1,5 +1,5 @@
 <div id="form" title="Edit Spot Form" style="width:300px";>
-<h1> Edit Spot</h1>
+<div id="title"><a href="/";> <img src="/assets/editform.jpg" alt="Edit Form"> </a> </div>
 <p style="color:#CC0000">{{message}}</p>
 <form method="post" id="edit">
 	<p style="font-size:small;"> *required field </p>

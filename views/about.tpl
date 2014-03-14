@@ -1,5 +1,5 @@
 
-<div id="title"><a href="/"> <img src= assets\aboutus.jpg> </a></div>
+<div id="title"><a href="/"> <img src= assets/aboutus.jpg> </a></div>
     <div id="slideshow-wrap">
         <input type="radio" id="button-1" name="controls" checked="checked"/>
         <label for="button-1"></label>
@@ -24,19 +24,19 @@
                         <input type="checkbox" id="show-description-1"/>
                         <label for="show-description-1" class="show-description-label">I</label>
                         <div class="description-text">
-                            <h2>Flower power</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+                            <h2>About</h2>
+                            <p>UCI antTrails lets you find your favorite foods on campus. </p>
                         </div>
                     </div>
                 </li>
                 <li id="slide2">
-                    <img src="http://cssdeck.com/uploads/media/items/4/40Ly3VB.jpg" />
+                    <img src="http://imgur.com/CNFYHtB,Ejz9GvO#1" />
                     <div class="description">
                         <input type="checkbox" id="show-description-2"/>
                         <label for="show-description-2" class="show-description-label">I</label>
                         <div class="description-text">
-                            <h2>Golden sunset</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+                            <h2>About Us</h2>
+                            <p>A student intitated project to improve student life on campus. </p>
                         </div>
                     </div>
                 </li>
@@ -62,14 +62,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="slide5">
-                    <img src="http://cssdeck.com/uploads/media/items/8/8k3N3EL.jpg" />
-                    <div class="description">
-                        <input type="checkbox" id="show-description-5"/>
-                        <label for="show-description-5" class="show-description-label">I</label>
-                        <div class="description-text">
-                            <h2>Splash!</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
+
                         </div>
                     </div>
                 </li>
@@ -77,6 +70,18 @@
         </div>
     </div>
 	
+<table style="width:300px">
+<tr>
+  <td>Jill</td>
+  <td>Smith</td> 
+  <td>50</td>
+</tr>
+<tr>
+  <td>Eve</td>
+  <td>Jackson</td> 
+  <td>94</td>
+</tr>
+</table>
 
 
 <style>
