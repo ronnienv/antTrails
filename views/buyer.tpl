@@ -152,7 +152,7 @@ $(document).ready(function(){
 <style>
 
 * { margin:0; padding:0; }
-p { margin:5px 0 10px 0; }
+p { margin:0; }
 html, body {
 		width: 100%; height: 100%;
 }
@@ -163,7 +163,6 @@ html, body {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 10px;
-	overflow-y: auto;
 	height: 100%;
 	}
 #rightCol{
@@ -180,17 +179,22 @@ html, body {
 
 @media only screen and (max-width: 1200px) {
 	#leftCol{
-		width: 420px;
+		width: 640px;
+		padding-left: 10%;
+		padding-right: 10%;
+		margin: 0px;
 		}
 
 	#rightCol{
-		width: 420px;
+		width: 640px;
+		padding-left: 10%;
+		padding-right: 10%;
+		margin: 0px;
 		}
 
 	#table{
+
 		height: 100%;
-		margin-right: 12%;
-		margin-left: 8%;
 	}
 }
 
