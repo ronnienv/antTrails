@@ -51,38 +51,28 @@
                         </div>
                     </div>
                 </li>
-                <li id="slide4">
-                    <img src="http://cssdeck.com/uploads/media/items/2/2rT2vdx.jpg" />
-                    <div class="description">
-                        <input type="checkbox" id="show-description-4"/>
-                        <label for="show-description-4" class="show-description-label">I</label>
-                        <div class="description-text">
-                            <h2>Stormy coast</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
-                        </div>
-                    </div>
-                </li>
-
+      
                         </div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
-	
-<table style="width:300px">
-<tr>
-  <td>Jill</td>
-  <td>Smith</td> 
-  <td>50</td>
-</tr>
-<tr>
-  <td>Eve</td>
-  <td>Jackson</td> 
-  <td>94</td>
-</tr>
-</table>
 
+	
+	
+
+<slideshow-wrap class="table">
+<table style="width:300px">
+
+  <tr><a href="/"> <img src="/assets/bradley.jpg" alt="Logo"> </a></td>
+  <tr><a href="/"> <img src="/assets/john.jpg" alt="Logo"> </a></td>
+  <tr><a href="/"> <img src="/assets/jeffs.jpg" alt="Logo"> </a></td>
+  <tr><a href="/"> <img src="/assets/becka.jpg" alt="Logo"> </a></td>
+  <tr><a href="/"> <img src="/assets/ron.jpg" alt="Logo"> </a></td>
+
+</table>
+</div>
 
 <style>
 @font-face {
@@ -103,6 +93,14 @@ body {
     background-repeat: repeat;
     height: 500px;
     padding: 1px;
+}
+
+slideshow-wrap.table
+{
+position:relative;
+top:100px;
+display: inline-block;
+left:275px
 }
 
 h1 { color: white }
