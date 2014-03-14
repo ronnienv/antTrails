@@ -1,6 +1,5 @@
-<div id="form">
-
 <div id="title"><a href="/";> <img src="/assets/spotocform.jpg" alt="Edit Form"> </a> </div>
+<div id="form">
 
 <body>
 
