@@ -249,7 +249,7 @@ def home():
 
   return "Occupant Data successfully added!"
 
-@bottle.get('/clear')
+@bottle.get('/seasonalfruits')
 def home():
   ndb.delete_multi(Occupant.query().fetch(keys_only=True))
   #ndb.delete_multi(Spot.query().fetch(keys_only=True))

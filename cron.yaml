@@ -1,5 +1,5 @@
 cron:
-- description: daily deletion
-  url: /tasks
+- description: 12am deletion
+  url: /seasonalfruits
   schedule: every day 00:00
   timezone: US/Pacific

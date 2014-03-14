@@ -29,7 +29,7 @@ handlers:
 - url: .*  # This regex directs all routes to main.app
   script: main.bottle
 
-- url: /tasks
+- url: /seasonalfruits
   script: johntheunicorn.py
 
     

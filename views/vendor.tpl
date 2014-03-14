@@ -17,7 +17,7 @@
 		</p>
 		
 		Organization:*<p style="font-size:small; color:#4775ff"><input type="text" name="organization" maxlength="40"  value = "{{org}}" required>
-		ex. Cat Lovers Anonymous
+		ex. Cat Lovers Anon.
 		</p>
 		
 <!-- 		Upload image
