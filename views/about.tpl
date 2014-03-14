@@ -19,7 +19,7 @@
         <div id="slideshow-inner">
             <ul>
                 <li id="slide1">
-                    <a href="/"><img src="/assets/Slider1.jpg" alt="Logo"></a>
+                    <img src="http://i.imgur.com/CNFYHtB.jpg" />
                     <div class="description">
                         <input type="checkbox" id="show-description-1"/>
                         <label for="show-description-1" class="show-description-label">I</label>
