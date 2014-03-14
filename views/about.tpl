@@ -19,7 +19,7 @@
         <div id="slideshow-inner">
             <ul>
                 <li id="slide1">
-                    <img src="/assets/Slider2.jpg" alt="Logo"> 
+                    <a href="/"><img src="/assets/Slider1.jpg" alt="Logo"></a>
                     <div class="description">
                         <input type="checkbox" id="show-description-1"/>
                         <label for="show-description-1" class="show-description-label">I</label>
@@ -41,7 +41,7 @@
                     </div>
                 </li>
                 <li id="slide3">
-                    <img src="/assets/Slider1.jpg" alt="Logo"> 
+                    <a href="/"><img src="/assets/Slider2.jpg" alt="Logo"></a>
                     <div class="description">
                         <input type="checkbox" id="show-description-3"/>
                         <label for="show-description-3" class="show-description-label">I</label>
