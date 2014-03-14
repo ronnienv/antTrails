@@ -34,7 +34,6 @@ $(document).ready(function(){
 
 </script>
 <div id="table">
-<div>
 	<div id="title"><a href="/"> <img src="/assets/spotoc.jpg"	 alt="Spot Occupants"> </a></div>
 	<div id="leftCol">
 	<table class="table table-striped">
@@ -61,7 +60,6 @@ $(document).ready(function(){
 	   %end
 	  </tbody>
 	</table>
-	</div>
 </div>
 
 <!-- /.table-responsive -->
@@ -164,6 +162,7 @@ html, body {
 	padding-right: 10px;
 	padding-bottom: 10px;
 	height: 100%;
+	overflow-y: scroll;
 	}
 #rightCol{
 	width: 60%;
@@ -174,26 +173,28 @@ html, body {
 	padding-bottom: 10px;
 	}
 #table{
+	width: 100%;
 	height: 72%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 980px) {
 	#leftCol{
 		width: 640px;
 		padding-left: 10%;
-		padding-right: 10%;
+		padding-right: 13%;
 		margin: 0px;
+		height: auto;
 		}
 
 	#rightCol{
 		width: 640px;
 		padding-left: 10%;
-		padding-right: 10%;
+		padding-right: 13;
 		margin: 0px;
 		}
 
 	#table{
-
+		width: 100%;
 		height: 100%;
 	}
 }
