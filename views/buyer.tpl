@@ -172,6 +172,7 @@ html, body {
 	padding-right: 15px;
 	padding-bottom: 10px;
 	}
+
 #table{
 	width: 100%;
 	height: 72%;
@@ -180,22 +181,29 @@ html, body {
 @media only screen and (max-width: 980px) {
 	#leftCol{
 		width: 640px;
-		padding-left: 10%;
-		padding-right: 13%;
 		margin: 0px;
 		height: auto;
+		padding-left: 40px;
+		padding-right: 40px;
+		padding-bottom: 10px;
 		}
 
 	#rightCol{
 		width: 640px;
-		padding-left: 10%;
-		padding-right: 13;
 		margin: 0px;
+		padding-left: 40px;
+		padding-right: 40px;
+		padding-bottom: 10px;		
 		}
 
 	#table{
-		width: 100%;
+		width: 75%;
 		height: 100%;
+	}
+
+	#title{
+		padding-left: 40px;
+		padding-right: 40px;
 	}
 }
 
