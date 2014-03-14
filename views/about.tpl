@@ -5,17 +5,10 @@
         <label for="button-1"></label>
         <input type="radio" id="button-2" name="controls"/>
         <label for="button-2"></label>
-        <input type="radio" id="button-3" name="controls"/>
-        <label for="button-3"></label>
-        <input type="radio" id="button-4" name="controls"/>
-        <label for="button-4"></label>
-        <input type="radio" id="button-5" name="controls"/>
-        <label for="button-5"></label>
+
         <label for="button-1" class="arrows" id="arrow-1">></label>
         <label for="button-2" class="arrows" id="arrow-2">></label>
-        <label for="button-3" class="arrows" id="arrow-3">></label>
-        <label for="button-4" class="arrows" id="arrow-4">></label>
-        <label for="button-5" class="arrows" id="arrow-5">></label>
+
         <div id="slideshow-inner">
             <ul>
                 <li id="slide1">
@@ -30,7 +23,7 @@
                     </div>
                 </li>
                 <li id="slide2">
-                    <img src="http://imgur.com/CNFYHtB,Ejz9GvO#1" />
+                    <img src="http://i.imgur.com/Ejz9GvO.jpg" />
                     <div class="description">
                         <input type="checkbox" id="show-description-2"/>
                         <label for="show-description-2" class="show-description-label">I</label>
@@ -40,18 +33,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="slide3">
-                    <a href="/"><img src="/assets/Slider2.jpg" alt="Logo"></a>
-                    <div class="description">
-                        <input type="checkbox" id="show-description-3"/>
-                        <label for="show-description-3" class="show-description-label">I</label>
-                        <div class="description-text">
-                            <h2>Flower power again</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut</p>
-                        </div>
-                    </div>
-                </li>
-      
+     
                         </div>
                     </div>
                 </li>
@@ -187,29 +169,18 @@ h1 { color: white }
 
 #slideshow-wrap input[type=radio]#button-2:checked~label[for=button-2] { background-color: rgba(100,100,100,1) }
 
-#slideshow-wrap input[type=radio]#button-3:checked~label[for=button-3] { background-color: rgba(100,100,100,1) }
-
-#slideshow-wrap input[type=radio]#button-4:checked~label[for=button-4] { background-color: rgba(100,100,100,1) }
-
-#slideshow-wrap input[type=radio]#button-5:checked~label[for=button-5] { background-color: rgba(100,100,100,1) }
 
 #slideshow-wrap label[for=button-1] { margin-left: -36px }
 
 #slideshow-wrap label[for=button-2] { margin-left: -18px }
 
-#slideshow-wrap label[for=button-4] { margin-left: 18px }
 
-#slideshow-wrap label[for=button-5] { margin-left: 36px }
 
 #slideshow-wrap input[type=radio]#button-1:checked~#slideshow-inner>ul { left: 0 }
 
 #slideshow-wrap input[type=radio]#button-2:checked~#slideshow-inner>ul { left: -100% }
 
-#slideshow-wrap input[type=radio]#button-3:checked~#slideshow-inner>ul { left: -200% }
 
-#slideshow-wrap input[type=radio]#button-4:checked~#slideshow-inner>ul { left: -300% }
-
-#slideshow-wrap input[type=radio]#button-5:checked~#slideshow-inner>ul { left: -400% }
 
 label.arrows {
     font-family: 'WebSymbolsRegular';
@@ -249,11 +220,6 @@ input[type=radio]#button-2:checked~.arrows#arrow-1, input[type=radio]#button-3:c
     transform: scaleX(-1);
 }
 
-input[type=radio]#button-2:checked~.arrows#arrow-1 { left: -19px }
-
-input[type=radio]#button-3:checked~.arrows#arrow-2 { left: -37px }
-
-input[type=radio]#button-5:checked~.arrows#arrow-4 { left: -73px }
 
 .description {
     position: absolute;
